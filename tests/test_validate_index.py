@@ -104,6 +104,23 @@ class ValidatorTests(unittest.TestCase):
         report = validate_index.validate_index(readme(compact_entry(publication="ACL")), TAGS, date(2026, 9, 20))
         self.assertTrue(any("First public" in error for error in report.errors))
 
+    def test_unauthorized_preprint_fails(self):
+        report = validate_index.validate_index(
+            readme(compact_entry(publication="arXiv 2025-12")),
+            TAGS,
+            date(2026, 9, 20),
+        )
+        self.assertTrue(any("exception ledger" in error for error in report.errors))
+
+    def test_authorized_preprint_passes(self):
+        report = validate_index.validate_index(
+            readme(compact_entry(publication="arXiv 2025-12")),
+            TAGS,
+            date(2026, 9, 20),
+            {"2501.00001"},
+        )
+        self.assertEqual([], report.errors)
+
     def test_compact_entries_sort_by_publication_year(self):
         newer = compact_entry(title="Newer", publication="EMNLP 2025", url="https://arxiv.org/abs/2501.00002")
         older = compact_entry(title="Older", publication="ACL 2024", url="https://arxiv.org/abs/2401.00001")
@@ -125,6 +142,17 @@ class ValidatorTests(unittest.TestCase):
         second = entry(title="Versioned Paper", paper_id="url:https://arxiv.org/pdf/2501.00001v2.pdf", url="https://arxiv.org/pdf/2501.00001v2.pdf")
         report = validate_index.validate_index(readme(first, second), TAGS, date(2026, 9, 20))
         self.assertTrue(any("duplicate" in error.lower() for error in report.errors))
+
+    def test_arxiv_doi_normalizes_to_the_same_identity(self):
+        canonical = "https://arxiv.org/abs/2501.00001"
+        self.assertEqual(
+            validate_index.normalize_paper_url(canonical),
+            validate_index.normalize_paper_url("https://doi.org/10.48550/arXiv.2501.00001"),
+        )
+        self.assertEqual(
+            validate_index.normalize_paper_url(canonical),
+            validate_index.normalize_paper_url("https://arxiv.org/pdf/2501.00001v2.pdf"),
+        )
 
     def test_unknown_and_repeated_tags_fail(self):
         invalid = readme(entry(tags="`memory` `memory` `not-a-tag`"))

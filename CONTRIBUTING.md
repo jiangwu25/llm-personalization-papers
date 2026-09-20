@@ -27,7 +27,7 @@ The paper’s core research question should use user preferences, history, profi
 We welcome:
 
 - foundational persona and user-modeling work;
-- published papers in the selected venues, plus survey preprints;
+- published papers in the selected venues, plus survey preprints and named benchmark exceptions;
 - benchmarks, datasets, applications, and negative results that meet the venue filter;
 - methods based on prompting, retrieval, memory, fine-tuning, preference learning, decoding, or agents;
 - work on privacy, safety, fairness, leakage, and user control in personalization.
@@ -43,7 +43,9 @@ For a boundary case, explain the direct connection in one or two sentences.
 
 ### Venue filter
 
-For the main index, non-survey papers must be formally published in one of the selected top/main venues: **ACL, EMNLP, NAACL, AAAI, SIGIR, or CIKM**. Surveys are the only exception and may remain preprints. We currently exclude workshop papers, Findings volumes, industry tracks, LREC papers, and preprint-only methods from the main index; they may still be useful as future candidates if the policy changes.
+For the main index, non-survey papers must be formally published in one of the selected top/main venues: **ACL, EMNLP, NAACL, AAAI, SIGIR, or CIKM**. Surveys are the general exception and may remain preprints. A small number of explicitly approved benchmark preprints may also appear through the transparent [inclusion-exception ledger](docs/inclusion-exceptions.json); this is a named exception, not a general arXiv policy. We still exclude workshop papers, Findings volumes, industry tracks, LREC papers, and other preprint-only methods from the main index.
+
+For entries whose venue was supplied by an author but is not yet independently represented by a public proceedings page, see the [paper provenance ledger](docs/paper-provenance.json). Do not invent a track, DOI, page number, or proceedings URL.
 
 ## 🧩 Entry format
 
@@ -53,7 +55,7 @@ Add each paper to one primary category inside the marked Paper Index section of 
 - **[Exact paper title](https://canonical-paper-url)**  `ACL 2018`
 ```
 
-Use the official proceedings or publisher URL when available. The one-line label should use the formal venue and publication year, for example `ACL 2018`, `AAAI 2024`, or `Survey · 2025`. Keep summaries and implementation details in the paper itself or the reading guide rather than expanding the main index.
+Use the official proceedings or publisher URL when available. The one-line label should use the formal venue and publication year, for example `ACL 2018`, `AAAI 2024`, or `Survey · 2025`. A named benchmark exception must use its accurate preprint label, such as `arXiv 2025-12`. Keep summaries and implementation details in the paper itself or the reading guide rather than expanding the main index.
 
 ## ✅ Five-minute checklist
 

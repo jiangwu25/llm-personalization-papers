@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "policy": "Only explicitly listed exceptions may bypass the selected venue filter. An arXiv revision does not change paper identity.",
+  "exceptions": [
+    {
+      "canonical_id": "2512.06688",
+      "identity_type": "arxiv",
+      "title": "PersonaMem-v2: Towards Personalized Intelligence via Learning Implicit User Personas and Agentic Memory",
+      "category": "benchmarks-evaluation",
+      "display_publication": "arXiv 2025-12",
+      "status": "approved",
+      "approved_date": "2026-09-20",
+      "reason": "Maintainer-approved benchmark preprint exception for implicit-personalization evaluation.",
+      "scope": "This exception applies only to arXiv:2512.06688 and does not authorize other preprint-only papers."
+    }
+  ]
+}
