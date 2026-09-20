@@ -1,5 +1,5 @@
 name: Suggest a paper
-description: Suggest a relevant paper without editing Markdown.
+description: Suggest a relevant survey or top/main-conference paper without editing Markdown.
 title: "[Paper] "
 body:
   - type: input

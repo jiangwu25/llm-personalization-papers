@@ -26,6 +26,7 @@ Sources supporting the metadata or corrections:
 
 - [ ] I checked for duplicates.
 - [ ] The submission is within the repository's scope.
+- [ ] If this is not a survey, it is formally published in an accepted top/main venue.
 - [ ] Titles, dates, and publication details are supported by sources.
 - [ ] Paper summaries are factual and avoid unsupported claims.
 - [ ] I followed the entry format, allowed tags, and sorting rules.

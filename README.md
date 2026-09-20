@@ -7,15 +7,16 @@
 User modeling · memory · retrieval · preference alignment · personalized agents · evaluation
 
 [![Validate index](https://github.com/jiangwu25/llm-personalization-papers/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/jiangwu25/llm-personalization-papers/actions/workflows/validate.yml)
-[![Papers](https://img.shields.io/badge/papers-34-5B8FF9)](#paper-index)
+[![Papers](https://img.shields.io/badge/papers-17-5B8FF9)](#paper-index)
 [![License](https://img.shields.io/badge/license-MIT-22A06B)](LICENSE)
 
 </div>
 
-> [!NOTE]
-> This is a curated index, not a citation leaderboard or a claim that every result has been independently reproduced. “Canonical” here means a work established an influential task, dataset, framing, or method—not simply that it is old or highly cited.
+<p align="center">
+  <img src="assets/personalization-banner.png" alt="Abstract illustration of a personalized language model connected to a user profile, memory, and tailored response" width="100%">
+</p>
 
-## Start here
+## 🚀 Start here
 
 | If you want to… | Start with |
 | --- | --- |
@@ -25,36 +26,37 @@ User modeling · memory · retrieval · preference alignment · personalized age
 | Study memory and retrieval | [Memory & retrieval](#memory-retrieval) |
 | Add or correct a paper | [Contribution guide](CONTRIBUTING.md) |
 
-## Field map
+## 🧭 Field map
 
 | Track | What it covers | Papers |
 | --- | --- | :---: |
 | [Foundations & canonical benchmarks](#foundations) | Persona conditioning, implicit profiles, and early personalization tasks | 4 |
 | [Surveys & perspectives](#surveys) | Taxonomies, problem definitions, and open questions | 3 |
-| [User modeling & preference elicitation](#user-modeling) | Profiles, histories, preferences, and user representations | 4 |
-| [Memory & retrieval](#memory-retrieval) | Long-term memory, profile construction, and history selection | 5 |
-| [Prompting, steering & decoding](#inference-time) | Inference-time adaptation without full model retraining | 3 |
-| [Fine-tuning & personalized alignment](#training-alignment) | PEFT, feedback, reward modeling, and parameter updates | 6 |
-| [Personalized agents & applications](#agents-applications) | Agents, planning, writing, recommendation, and search | 3 |
-| [Benchmarks & evaluation](#benchmarks-evaluation) | Tasks, datasets, robustness, and user-specific evaluation | 4 |
-| [Privacy, safety & user control](#privacy-safety-control) | Selective use, leakage, fairness, and safe personalization | 2 |
+| [User modeling & preference elicitation](#user-modeling) | Profiles, histories, preferences, and user representations | 1 |
+| [Memory & retrieval](#memory-retrieval) | Long-term memory, profile construction, and history selection | 2 |
+| [Prompting, steering & decoding](#inference-time) | Inference-time adaptation without full model retraining | 1 |
+| [Fine-tuning & personalized alignment](#training-alignment) | PEFT, feedback, reward modeling, and parameter updates | 3 |
+| [Personalized agents & applications](#agents-applications) | Agents, planning, writing, recommendation, and search | 2 |
+| [Benchmarks & evaluation](#benchmarks-evaluation) | Tasks, datasets, robustness, and user-specific evaluation | 1 |
 
-## Scope and curation
+## 🎯 Scope and curation
 
 This index covers research where user preferences, history, profiles, feedback, personal context, or user-specific goals affect a language model’s behavior, outputs, interactions, or decisions. It includes methods, datasets, benchmarks, applications, and work on privacy, safety, bias, and user control.
 
 The first section intentionally includes pre-LLM personalized-dialogue work: these papers established persona conditioning, large-scale persona data, and implicit user profiles that later LLM-personalization work builds on. The remaining sections emphasize the LLM era and current research directions.
 
-General RAG, generic agents, role-playing, and traditional recommendation papers are not included unless the paper explicitly studies user-specific adaptation. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full inclusion rules and entry format.
+For the main index, non-survey papers must be formally published in a selected top/main venue: ACL, EMNLP, NAACL, AAAI, SIGIR, or CIKM. Surveys are the only exception. Workshop papers, Findings volumes, industry tracks, LREC papers, and preprint-only work are intentionally excluded from the main index. General RAG, generic agents, role-playing, and traditional recommendation papers are also out unless the paper explicitly studies user-specific adaptation.
 
-## Contribute
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full inclusion rules and entry format.
+
+## 🤝 Contribute
 
 Found a missing paper, a broken link, or a misleading summary? The fastest route is a focused [pull request](CONTRIBUTING.md#pull-request-checklist). If you do not want to edit Markdown, use the [paper-suggestion issue form](https://github.com/jiangwu25/llm-personalization-papers/issues/new?template=paper-suggestion.yml).
 
 Authors are welcome to submit their own work. We check relevance, source quality, metadata, duplicates, neutral wording, and ordering. Inclusion does not imply endorsement of a paper’s findings.
 
 <a id="paper-index"></a>
-## Paper Index
+## 📚 Paper Index
 
 <!-- PAPERS:START -->
 
@@ -123,36 +125,8 @@ Authors are welcome to submit their own work. We check relevance, source quality
   - Summary: Treats profile construction as an order-sensitive contextual-bandit problem instead of selecting history records by semantic relevance alone.
   - Tags: `user-profile` `retrieval` `agent`
 
-- **[User Profiling for Specification-Sensitive Recommendations with Large Language Model Prompting](https://aclanthology.org/2026.lrec-1.43/)**
-  - ID: `url:https://aclanthology.org/2026.lrec-1.43/`
-  - First public: `2026`
-  - Publication: LREC 2026
-  - Summary: Uses prompting to derive user and item profiles from reviews and specifications for recommendations that must respect fine-grained product attributes.
-  - Tags: `user-profile` `recommendation` `prompting`
-
-- **[Guided Profile Generation Improves Personalization with Large Language Models](https://aclanthology.org/2024.findings-emnlp.231/)**
-  - ID: `url:https://aclanthology.org/2024.findings-emnlp.231/`
-  - First public: `2024-11`
-  - Publication: Findings of EMNLP 2024
-  - Summary: Generates concise natural-language profiles from sparse personal context before asking an LLM to produce a personalized output.
-  - Tags: `user-profile` `prompting` `user-history`
-
-- **[User Embedding Model for Personalized Language Prompting](https://aclanthology.org/2024.personalize-1.12/)**
-  - ID: `url:https://aclanthology.org/2024.personalize-1.12/`
-  - First public: `2024-03`
-  - Publication: PERSONALIZE 2024
-  - Summary: Compresses long free-form user histories into embeddings that act as soft prompts for language models handling preference-sensitive tasks.
-  - Tags: `user-history` `prompting` `user-profile`
-
 <a id="memory-retrieval"></a>
 ### Memory & Retrieval
-
-- **[Evoking User Memory: Personalizing LLM via Recollection-Familiarity Adaptive Retrieval](https://arxiv.org/abs/2603.09250)**
-  - ID: `arxiv:2603.09250`
-  - First public: `2026-03`
-  - Publication: Preprint
-  - Summary: Uses uncertainty-guided familiarity and recollection paths to retrieve user memories adaptively instead of relying on one-shot similarity search.
-  - Tags: `memory` `retrieval` `user-history`
 
 - **[PRIME: Large Language Model Personalization with Cognitive Dual-Memory and Personalized Thought Process](https://aclanthology.org/2025.emnlp-main.1711/)**
   - ID: `url:https://aclanthology.org/2025.emnlp-main.1711/`
@@ -161,22 +135,8 @@ Authors are welcome to submit their own work. We check relevance, source quality
   - Summary: Separates episodic interaction memory from semantic user beliefs and adds a personalized thinking process to a unified personalization framework.
   - Tags: `memory` `personalized-alignment` `user-history`
 
-- **[Personalized Large Language Model Assistant with Evolving Conditional Memory](https://aclanthology.org/2025.coling-main.254/)**
-  - ID: `url:https://aclanthology.org/2025.coling-main.254/`
-  - First public: `2025-01`
-  - Publication: COLING 2025
-  - Summary: Stores dialogue-derived records in a memory bank, retrieves relevant records, and evaluates personalized assistants on dialogue continuation, knowledge, and feedback tasks.
-  - Tags: `memory` `retrieval` `agent`
-
-- **[On the Way to LLM Personalization: Learning to Remember User Conversations](https://arxiv.org/abs/2411.13405)**
-  - ID: `arxiv:2411.13405`
-  - First public: `2024-11`
-  - Publication: L2M2 2025 workshop
-  - Summary: Introduces a parameter-efficient pipeline that turns sequential prior conversations into training pairs for remembering user-specific information.
-  - Tags: `memory` `user-history` `fine-tuning`
-
-- **[MemoryBank: Enhancing Large Language Models with Long-Term Memory](https://arxiv.org/abs/2305.10250)**
-  - ID: `arxiv:2305.10250`
+- **[MemoryBank: Enhancing Large Language Models with Long-Term Memory](https://ojs.aaai.org/index.php/AAAI/article/view/29946)**
+  - ID: `doi:10.1609/aaai.v38i17.29946`
   - First public: `2023-05`
   - Publication: AAAI 2024
   - Summary: Adds evolving long-term memory with retrieval and forgetting-inspired updates to support sustained interaction and adaptation to a user's personality.
@@ -192,20 +152,6 @@ Authors are welcome to submit their own work. We check relevance, source quality
   - Summary: Applies reward-guided contrasting at decoding time after user-specific PEFT to amplify an implicit personal preference signal without another training stage.
   - Tags: `decoding` `personalized-alignment` `peft`
 
-- **[Drift: Decoding-time Personalized Alignments with Implicit User Preferences](https://aclanthology.org/2025.findings-emnlp.324/)**
-  - ID: `arxiv:2502.14289`
-  - First public: `2025-02`
-  - Publication: Findings of EMNLP 2025
-  - Summary: Steers a frozen LLM at decoding time by representing implicit user preferences as interpretable attributes inferred from a small number of examples.
-  - Tags: `decoding` `steering` `preference-elicitation`
-
-- **[RAGs to Style: Personalizing LLMs with Style Embeddings](https://aclanthology.org/2024.personalize-1.11/)**
-  - ID: `url:https://aclanthology.org/2024.personalize-1.11/`
-  - First public: `2024-03`
-  - Publication: PERSONALIZE 2024
-  - Summary: Uses style embeddings in retrieval-augmented prompting to represent authorial characteristics for personalized generation on the LaMP benchmark.
-  - Tags: `retrieval` `prompting` `user-profile`
-
 <a id="training-alignment"></a>
 ### Fine-tuning & Personalized Alignment
 
@@ -215,20 +161,6 @@ Authors are welcome to submit their own work. We check relevance, source quality
   - Publication: EMNLP 2025
   - Summary: Studies personalized preference alignment with small per-user questionnaires and proposes feature-aware sampling and parameter-efficient tuning.
   - Tags: `personalized-alignment` `fine-tuning` `peft`
-
-- **[Personalize Your LLM: Fake it then Align it](https://aclanthology.org/2025.findings-naacl.407/)**
-  - ID: `url:https://aclanthology.org/2025.findings-naacl.407/`
-  - First public: `2025-04`
-  - Publication: Findings of NAACL 2025
-  - Summary: Generates synthetic personal preference data and uses representation editing to adapt instruction-tuned models without a separate full fine-tuning run per user.
-  - Tags: `personalized-alignment` `fine-tuning` `user-profile`
-
-- **[Aligning LLMs with Individual Preferences via Interaction](https://aclanthology.org/2025.coling-main.511/)**
-  - ID: `url:https://aclanthology.org/2025.coling-main.511/`
-  - First public: `2025-01`
-  - Publication: COLING 2025
-  - Summary: Trains models to infer unspoken preferences through multi-turn interaction and introduces a customized-alignment benchmark for conversational evaluation.
-  - Tags: `personalized-alignment` `preference-elicitation` `benchmark`
 
 - **[Personalized Pieces: Efficient Personalized Large Language Models through Collaborative Efforts](https://aclanthology.org/2024.emnlp-main.371/)**
   - ID: `url:https://aclanthology.org/2024.emnlp-main.371/`
@@ -244,13 +176,6 @@ Authors are welcome to submit their own work. We check relevance, source quality
   - Summary: Stores user-specific behavior patterns and preferences in one PEFT module per user to support model ownership and local personalization.
   - Tags: `peft` `fine-tuning` `user-history`
 
-- **[Personalized Language Modeling from Personalized Human Feedback](https://arxiv.org/abs/2402.05133)**
-  - ID: `arxiv:2402.05133`
-  - First public: `2024-02`
-  - Publication: Preprint
-  - Summary: Jointly learns a lightweight user model and a personalized language model from feedback to represent explicit and implicit individual preferences.
-  - Tags: `personalized-alignment` `reward-modeling` `preference-elicitation`
-
 <a id="agents-applications"></a>
 ### Personalized Agents & Applications
 
@@ -260,13 +185,6 @@ Authors are welcome to submit their own work. We check relevance, source quality
   - Publication: ACL 2026
   - Summary: Introduces MyScholarQA, a personalized deep-research setting that profiles real users, proposes actions, and produces reports after user-approved planning.
   - Tags: `agent` `search` `evaluation`
-
-- **[Personal Large Language Model Agents: A Case Study on Tailored Travel Planning](https://aclanthology.org/2024.emnlp-industry.37/)**
-  - ID: `url:https://aclanthology.org/2024.emnlp-industry.37/`
-  - First public: `2024-11`
-  - Publication: EMNLP 2024 Industry Track
-  - Summary: Adapts TravelPlanner into a personalized travel-planning benchmark and studies baselines for agents that incorporate individual preferences.
-  - Tags: `agent` `recommendation` `benchmark`
 
 - **[Crafting Personalized Agents through Retrieval-Augmented Generation on Editable Memory Graphs](https://aclanthology.org/2024.emnlp-main.281/)**
   - ID: `url:https://aclanthology.org/2024.emnlp-main.281/`
@@ -278,27 +196,6 @@ Authors are welcome to submit their own work. We check relevance, source quality
 <a id="benchmarks-evaluation"></a>
 ### Benchmarks & Evaluation
 
-- **[Personalized Benchmarking: Evaluating LLMs by Individual Preferences](https://arxiv.org/abs/2604.18943)**
-  - ID: `arxiv:2604.18943`
-  - First public: `2026-04`
-  - Publication: Preprint
-  - Summary: Computes user-specific model rankings from Chatbot Arena preferences and analyzes how topics and writing style relate to ranking differences.
-  - Tags: `benchmark` `evaluation` `user-profile`
-
-- **[MPTA: MultiTask Personalization Assessment](https://aclanthology.org/2025.findings-emnlp.640/)**
-  - ID: `url:https://aclanthology.org/2025.findings-emnlp.640/`
-  - First public: `2025-11`
-  - Publication: Findings of EMNLP 2025
-  - Summary: Uses large-scale survey responses to build detailed personas and tests personalized behavior across alignment tasks and subgroup-sensitive outcomes.
-  - Tags: `benchmark` `evaluation` `personalized-alignment`
-
-- **[Benchmarking and Improving LLM Robustness for Personalized Generation](https://aclanthology.org/2025.findings-emnlp.870/)**
-  - ID: `url:https://aclanthology.org/2025.findings-emnlp.870/`
-  - First public: `2025-11`
-  - Publication: Findings of EMNLP 2025
-  - Summary: Defines robust personalized generation as preserving factuality while following user preferences and introduces the PERG evaluation framework and dataset.
-  - Tags: `benchmark` `evaluation` `user-history`
-
 - **[LaMP: When Large Language Models Meet Personalization](https://aclanthology.org/2024.acl-long.399/)**
   - ID: `arxiv:2304.11406`
   - First public: `2023-04`
@@ -307,33 +204,16 @@ Authors are welcome to submit their own work. We check relevance, source quality
   - Tags: `benchmark` `retrieval` `evaluation`
   - Resources: [Code](https://github.com/LaMP-Benchmark/LaMP)
 
-<a id="privacy-safety-control"></a>
-### Privacy, Safety & User Control
-
-- **[BenchPreS: A Benchmark for Context-Aware Personalized Preference Selectivity of Persistent-Memory LLMs](https://arxiv.org/abs/2603.16557)**
-  - ID: `arxiv:2603.16557`
-  - First public: `2026-03`
-  - Publication: Preprint
-  - Summary: Measures whether persistent user preferences are applied or suppressed appropriately across communication contexts using misapplication and appropriate-application rates.
-  - Tags: `privacy` `user-control` `benchmark`
-
-- **[When Personalization Meets Reality: A Multi-Faceted Analysis of Personalized Preference Learning](https://aclanthology.org/2025.findings-emnlp.916/)**
-  - ID: `url:https://aclanthology.org/2025.findings-emnlp.916/`
-  - First public: `2025-11`
-  - Publication: Findings of EMNLP 2025
-  - Summary: Evaluates personalized preference learning across performance, fairness, unintended effects, adaptability, and safety under differing user preferences.
-  - Tags: `personalized-alignment` `safety` `evaluation`
-
 <!-- PAPERS:END -->
 
-## Contributors & Acknowledgments
+## 🙌 Contributors & Acknowledgments
 
-Thank you to everyone who contributes paper suggestions, metadata corrections, source links, reading-guide improvements, and maintenance work. This first version does not list contributors until real contributions have been made.
+Thank you to everyone who contributes paper suggestions, metadata corrections, source links, reading-guide improvements, and maintenance work. Contributors will be listed here as the project grows.
 
-## License
+## 📄 License
 
 The original text, scripts, and templates in this repository are released under the [MIT License](LICENSE). Linked papers, code, datasets, and other external materials remain under their own licenses and terms; this repository license does not relicense them.
 
-## Suggested GitHub Topics
+## 🏷️ Suggested GitHub Topics
 
 `llm-personalization` `personalized-llm` `large-language-models` `paper-list` `user-modeling`
