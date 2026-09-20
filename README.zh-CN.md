@@ -45,17 +45,15 @@
 
 “奠基工作”部分特意保留了 LLM 时代之前的个性化对话研究，因为这些工作建立了人物设定、规模化 persona 数据和隐式用户画像等重要基础。
 
-主清单中的非综述论文必须正式发表于指定顶级会议的主会：**ACL、EMNLP、NAACL、AAAI、SIGIR 或 CIKM**。此外，“奠基工作与经典基准”分类包含[benchmark-catalog.json](docs/benchmark-catalog.json)中明确登记的 22 篇 benchmark，并保留各自真实发表状态。PersonaMem-v2 仍通过[例外台账](docs/inclusion-exceptions.json)单独记录；这不代表其他无关 arXiv 论文都可以加入。CARD 和 PsPLUG 的 `EMNLP 2026` 来自作者确认，具体记录见[来源台账](docs/paper-provenance.json)；没有推测 track 或 proceedings 链接。
+我们欢迎任何发表阶段的相关投稿，包括会议论文、Workshop、Findings、数据集、基准以及 arXiv 预印本。尤其欢迎作者直接提交自己的工作；请附上规范来源和足够上下文，方便读者核验相关性与发表状态。
 
-除这批明确登记的 benchmark 外，Workshop、Findings、Industry Track、LREC 和其他仅有预印本的方法论文仍不纳入主清单。通用 RAG、通用智能体、角色扮演和传统推荐论文，若未明确研究用户特定适配，也不在收录范围内。
-
-完整规则请参阅[贡献指南](CONTRIBUTING.md)。
+投稿格式与审核检查请参阅[贡献指南](CONTRIBUTING.md)。
 
 </details>
 
 ## 🌱 参与贡献
 
-发现遗漏论文、失效链接或错误会议信息？欢迎提交一个聚焦的 [Pull Request](CONTRIBUTING.md#pull-request-checklist)，也可以使用[论文推荐表单](https://github.com/jiangwu25/llm-personalization-papers/issues/new?template=paper-suggestion.yml)。论文作者也可以推荐自己的工作；每个条目都会核查相关性、来源质量、重复项、会议和表述中立性。
+有相关论文、基准、数据集、失效链接或元数据需要补充吗？所有相关投稿都欢迎：可以提交 [Pull Request](CONTRIBUTING.md#pull-request-checklist)，也可以使用[论文推荐表单](https://github.com/jiangwu25/llm-personalization-papers/issues/new?template=paper-suggestion.yml)。每个条目都会核查相关性、来源质量、重复项、元数据准确性和表述中立性。
 
 <a id="paper-index"></a>
 ## 📚 论文列表

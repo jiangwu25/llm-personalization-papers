@@ -45,17 +45,15 @@ This index covers research where user preferences, history, profiles, feedback, 
 
 The foundations section intentionally includes pre-LLM personalized-dialogue work. These papers established persona conditioning, large-scale persona data, and implicit user profiles that later LLM-personalization research builds on.
 
-For the main index, non-survey papers must be formally published in a selected top/main venue: **ACL, EMNLP, NAACL, AAAI, SIGIR, or CIKM**. The Foundations & Canonical Benchmarks section additionally contains the named 22-entry benchmark batch recorded in [benchmark-catalog.json](docs/benchmark-catalog.json), preserving each item’s real publication status. PersonaMem-v2 remains separately recorded in the [inclusion-exception ledger](docs/inclusion-exceptions.json); this does not open the index to unrelated preprint-only work. CARD and PsPLUG display EMNLP 2026 based on author-confirmed venue information recorded in the [provenance ledger](docs/paper-provenance.json); no track or proceedings URL is inferred.
+Submissions are welcome at any publication stage, including conference papers, workshop papers, Findings papers, datasets, benchmarks, and preprints. Authors are especially encouraged to submit their own work. Please include a canonical source and enough context for readers to verify relevance and publication status.
 
-Outside that named benchmark batch, workshop papers, Findings volumes, industry tracks, LREC papers, and other preprint-only work remain excluded. General RAG, generic agents, role-playing, and traditional recommendation papers are also out unless they explicitly study user-specific adaptation.
-
-See the [contribution guide](CONTRIBUTING.md) for the complete inclusion rules.
+See the [contribution guide](CONTRIBUTING.md) for the submission format and review checks.
 
 </details>
 
 ## 🌱 Contribute
 
-Found a missing paper, broken link, or incorrect venue? Open a focused [pull request](CONTRIBUTING.md#pull-request-checklist) or use the [paper-suggestion form](https://github.com/jiangwu25/llm-personalization-papers/issues/new?template=paper-suggestion.yml). Authors are welcome to submit their own work; every entry is checked for relevance, source quality, duplicates, venue, and neutral wording.
+Have a relevant paper, benchmark, dataset, broken link, or metadata correction? All submissions are welcome—open a [pull request](CONTRIBUTING.md#pull-request-checklist) or use the [paper-suggestion form](https://github.com/jiangwu25/llm-personalization-papers/issues/new?template=paper-suggestion.yml). Every entry is checked for relevance, source quality, duplicates, accurate metadata, and neutral wording.
 
 <a id="paper-index"></a>
 ## 📚 Paper Index

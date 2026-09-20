@@ -45,17 +45,15 @@
 
 기반 연구 섹션에는 LLM 이전의 개인화 대화 연구도 의도적으로 포함했습니다. 이 연구들은 이후 LLM 개인화가 이어받은 페르소나 조건화, 대규모 페르소나 데이터, 암묵적 사용자 프로필의 토대를 마련했습니다.
 
-메인 목록의 비서베이 논문은 지정된 주요 학회의 메인 트랙인 **ACL, EMNLP, NAACL, AAAI, SIGIR, CIKM** 중 하나에 정식 게재되어야 합니다. 또한 “기반 연구와 대표 벤치마크” 분류에는 [benchmark-catalog.json](docs/benchmark-catalog.json)에 명시된 22개 benchmark를 실제 발표 상태 그대로 포함합니다. PersonaMem-v2는 [예외 원장](docs/inclusion-exceptions.json)에 별도로 기록된 유일한 명시적 프리프린트 예외이며, 다른 무관한 arXiv 논문까지 자동 허용하지 않습니다. CARD와 PsPLUG의 `EMNLP 2026` 표기는 저자가 확인한 정보이며, 자세한 내용은 [출처 원장](docs/paper-provenance.json)에 기록했습니다. 확인되지 않은 트랙이나 proceedings 링크는 추가하지 않습니다.
+학회 논문, 워크숍, Findings, 데이터셋, 벤치마크, arXiv 프리프린트를 포함해 출판 단계와 관계없이 관련 연구의 제안을 환영합니다. 저자 본인의 연구도 적극 환영하며, 관련성과 발표 상태를 확인할 수 있는 정식 출처와 충분한 맥락을 함께 제공해 주세요.
 
-명시적으로 등록된 benchmark 묶음 외에는 워크숍, Findings, Industry Track, LREC 및 그 밖의 프리프린트 전용 방법론 논문을 계속 제외합니다. 사용자별 적응을 명시적으로 연구하지 않는 일반 RAG, 범용 에이전트, 역할극, 전통적 추천 연구도 범위 밖입니다.
-
-전체 기준은 [기여 가이드](CONTRIBUTING.md)를 확인해 주세요.
+제출 형식과 검토 기준은 [기여 가이드](CONTRIBUTING.md)를 확인해 주세요.
 
 </details>
 
 ## 🌱 기여하기
 
-빠진 논문, 끊어진 링크, 잘못된 학회 정보가 있나요? 범위를 좁힌 [Pull Request](CONTRIBUTING.md#pull-request-checklist)를 열거나 [논문 제안 양식](https://github.com/jiangwu25/llm-personalization-papers/issues/new?template=paper-suggestion.yml)을 사용해 주세요. 저자 본인의 논문도 제안할 수 있으며, 모든 항목은 관련성, 출처 품질, 중복, 학회, 중립적 표현을 확인합니다.
+관련 논문, 벤치마크, 데이터셋, 끊어진 링크 또는 메타데이터 수정 사항이 있나요? 모든 관련 제안을 환영합니다. [Pull Request](CONTRIBUTING.md#pull-request-checklist)를 열거나 [논문 제안 양식](https://github.com/jiangwu25/llm-personalization-papers/issues/new?template=paper-suggestion.yml)을 사용해 주세요. 모든 항목은 관련성, 출처 품질, 중복, 정확한 메타데이터, 중립적 표현을 확인합니다.
 
 <a id="paper-index"></a>
 ## 📚 논문 목록
