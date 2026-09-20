@@ -14,6 +14,8 @@ from urllib.parse import urlsplit, urlunsplit
 
 PAPER_START = "<!-- PAPERS:START -->"
 PAPER_END = "<!-- PAPERS:END -->"
+BENCHMARK_START = "<!-- BENCHMARKS:START -->"
+BENCHMARK_END = "<!-- BENCHMARKS:END -->"
 TAGS_START = "<!-- TAGS:START -->"
 TAGS_END = "<!-- TAGS:END -->"
 CATEGORY_ORDER = (
@@ -179,11 +181,28 @@ def parse_papers(text: str) -> list[PaperEntry]:
     return entries
 
 
+def parse_benchmarks(text: str) -> list[PaperEntry]:
+    """Parse the broader benchmark catalog outside the curated paper index."""
+    block, first_line = parse_marked_block(text, BENCHMARK_START, BENCHMARK_END)
+    entries, _, parse_errors = _parse_entries(block, first_line)
+    if parse_errors:
+        raise ValueError("; ".join(parse_errors))
+    return entries
+
+
 def paper_signature(text: str) -> list[tuple[str, str, str]]:
     """Return ordered, language-independent metadata for synchronization checks."""
     return [
         (entry.title, normalize_paper_url(entry.url), entry.publication)
         for entry in parse_papers(text)
+    ]
+
+
+def benchmark_signature(text: str) -> list[tuple[str, str, str]]:
+    """Return ordered, language-independent metadata for the benchmark catalog."""
+    return [
+        (entry.title, normalize_paper_url(entry.url), entry.publication)
+        for entry in parse_benchmarks(text)
     ]
 
 
@@ -395,6 +414,9 @@ def main() -> int:
         report.errors.append(f"paper provenance ledger is invalid: {exc}")
     try:
         canonical_signature = paper_signature(readme_text)
+        canonical_benchmark_signature = benchmark_signature(readme_text)
+        if len(canonical_benchmark_signature) != len(set(canonical_benchmark_signature)):
+            report.errors.append("README.md: benchmark catalog contains duplicate entries")
         expected_count = len(canonical_signature)
         if paper_badge_count(readme_text) != expected_count:
             report.errors.append("README.md: paper-count badge does not match the parsed index")
@@ -406,6 +428,8 @@ def main() -> int:
             localized_text = localized_path.read_text(encoding="utf-8")
             if paper_signature(localized_text) != canonical_signature:
                 report.errors.append(f"{localized_name}: paper list is not synchronized with README.md")
+            if benchmark_signature(localized_text) != canonical_benchmark_signature:
+                report.errors.append(f"{localized_name}: benchmark catalog is not synchronized with README.md")
             if paper_badge_count(localized_text) != expected_count:
                 report.errors.append(f"{localized_name}: paper-count badge does not match the parsed index")
     except ValueError as exc:
