@@ -16,6 +16,7 @@ PAPER_END = "<!-- PAPERS:END -->"
 TAGS_START = "<!-- TAGS:START -->"
 TAGS_END = "<!-- TAGS:END -->"
 CATEGORY_ORDER = (
+    "Foundations & Canonical Benchmarks",
     "Surveys & Perspectives",
     "User Modeling & Preference Elicitation",
     "Memory & Retrieval",
