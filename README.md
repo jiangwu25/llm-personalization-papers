@@ -1,29 +1,93 @@
+<div align="center">
+
 # LLM Personalization Papers
 
-An open, community-maintained index of research on personalized large language models, covering user modeling, memory, personalized alignment, generation, agents, and evaluation.
+**A curated, evidence-first reading list for making language models useful to one person.**
 
-**New to the field?** Start with the [reading guide](docs/reading-guide.md).
-**Looking for papers?** Browse the [paper index](#paper-index).
-**Adding or updating a paper?** Read the [contribution guide](CONTRIBUTING.md).
+User modeling · memory · retrieval · preference alignment · personalized agents · evaluation
+
+[![Validate index](https://github.com/jiangwu25/llm-personalization-papers/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/jiangwu25/llm-personalization-papers/actions/workflows/validate.yml)
+[![Papers](https://img.shields.io/badge/papers-34-5B8FF9)](#paper-index)
+[![License](https://img.shields.io/badge/license-MIT-22A06B)](LICENSE)
+
+</div>
+
+> [!NOTE]
+> This is a curated index, not a citation leaderboard or a claim that every result has been independently reproduced. “Canonical” here means a work established an influential task, dataset, framing, or method—not simply that it is old or highly cited.
+
+## Start here
+
+| If you want to… | Start with |
+| --- | --- |
+| Build the vocabulary | [Reading guide](docs/reading-guide.md) → [surveys](#surveys) |
+| Understand the historical roots | [Foundations & canonical benchmarks](#foundations) |
+| Compare evaluation setups | [Benchmarks & evaluation](#benchmarks-evaluation) |
+| Study memory and retrieval | [Memory & retrieval](#memory-retrieval) |
+| Add or correct a paper | [Contribution guide](CONTRIBUTING.md) |
+
+## Field map
+
+| Track | What it covers | Papers |
+| --- | --- | :---: |
+| [Foundations & canonical benchmarks](#foundations) | Persona conditioning, implicit profiles, and early personalization tasks | 4 |
+| [Surveys & perspectives](#surveys) | Taxonomies, problem definitions, and open questions | 3 |
+| [User modeling & preference elicitation](#user-modeling) | Profiles, histories, preferences, and user representations | 4 |
+| [Memory & retrieval](#memory-retrieval) | Long-term memory, profile construction, and history selection | 5 |
+| [Prompting, steering & decoding](#inference-time) | Inference-time adaptation without full model retraining | 3 |
+| [Fine-tuning & personalized alignment](#training-alignment) | PEFT, feedback, reward modeling, and parameter updates | 6 |
+| [Personalized agents & applications](#agents-applications) | Agents, planning, writing, recommendation, and search | 3 |
+| [Benchmarks & evaluation](#benchmarks-evaluation) | Tasks, datasets, robustness, and user-specific evaluation | 4 |
+| [Privacy, safety & user control](#privacy-safety-control) | Selective use, leakage, fairness, and safe personalization | 2 |
+
+## Scope and curation
+
+This index covers research where user preferences, history, profiles, feedback, personal context, or user-specific goals affect a language model’s behavior, outputs, interactions, or decisions. It includes methods, datasets, benchmarks, applications, and work on privacy, safety, bias, and user control.
+
+The first section intentionally includes pre-LLM personalized-dialogue work: these papers established persona conditioning, large-scale persona data, and implicit user profiles that later LLM-personalization work builds on. The remaining sections emphasize the LLM era and current research directions.
+
+General RAG, generic agents, role-playing, and traditional recommendation papers are not included unless the paper explicitly studies user-specific adaptation. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full inclusion rules and entry format.
 
 ## Contribute
 
-Missing a relevant paper? Open a pull request or a paper-suggestion issue. Authors are welcome to submit their own work.
+Found a missing paper, a broken link, or a misleading summary? The fastest route is a focused [pull request](CONTRIBUTING.md#pull-request-checklist). If you do not want to edit Markdown, use the [paper-suggestion issue form](https://github.com/jiangwu25/llm-personalization-papers/issues/new?template=paper-suggestion.yml).
 
-We welcome preprints and published papers. We review submissions for relevance, accurate metadata, working source links, and duplicates. In-scope entries that meet the contribution guidelines are welcome regardless of venue or code availability.
-
-Inclusion does not imply endorsement of a paper's findings or a claim that its results have been independently reproduced.
-
-## Scope
-
-This index covers research where user preferences, history, profiles, feedback, personal context, or user-specific goals affect an LLM's behavior, outputs, interactions, or decisions. It includes methods, datasets, benchmarks, applications, and work on privacy, safety, bias, and user control. General RAG, generic agents, role-playing, and traditional recommendation papers are not included unless the paper explicitly studies user-specific adaptation.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the full inclusion rules and entry format.
+Authors are welcome to submit their own work. We check relevance, source quality, metadata, duplicates, neutral wording, and ordering. Inclusion does not imply endorsement of a paper’s findings.
 
 <a id="paper-index"></a>
 ## Paper Index
 
 <!-- PAPERS:START -->
+
+<a id="foundations"></a>
+### Foundations & Canonical Benchmarks
+
+- **[Learning Implicit User Profiles for Personalized Retrieval-Based Chatbot](https://arxiv.org/abs/2108.07935)**
+  - ID: `arxiv:2108.07935`
+  - First public: `2021-08`
+  - Publication: CIKM 2021
+  - Summary: Separates a user’s language style from context-dependent preferences and uses both signals to rank responses for a personalized retrieval-based chatbot.
+  - Tags: `foundations` `user-profile` `retrieval`
+
+- **[One Chatbot Per Person: Creating Personalized Chatbots based on Implicit User Profiles](https://arxiv.org/abs/2108.09355)**
+  - ID: `arxiv:2108.09355`
+  - First public: `2021-08`
+  - Publication: SIGIR 2021
+  - Summary: Learns implicit user profiles from dialogue history, combines general and post-aware memory, and decodes responses using user-specific vocabulary.
+  - Tags: `foundations` `user-profile` `memory`
+
+- **[Training Millions of Personalized Dialogue Agents](https://aclanthology.org/D18-1298/)**
+  - ID: `doi:10.18653/v1/D18-1298`
+  - First public: `2018-10`
+  - Publication: EMNLP 2018
+  - Summary: Scales persona-based dialogue training to millions of personas and hundreds of millions of persona-grounded conversations.
+  - Tags: `foundations` `dataset` `user-profile`
+
+- **[Personalizing Dialogue Agents: I have a dog, do you have pets too?](https://aclanthology.org/P18-1205/)**
+  - ID: `doi:10.18653/v1/P18-1205`
+  - First public: `2018-07`
+  - Publication: ACL 2018
+  - Summary: Introduces persona-conditioned dialogue modeling and the Persona-Chat task, including conditioning on the agent’s profile and learning about the conversation partner.
+  - Tags: `foundations` `user-profile` `preference-elicitation`
 
 <a id="surveys"></a>
 ### Surveys & Perspectives

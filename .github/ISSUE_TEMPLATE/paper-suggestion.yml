@@ -28,6 +28,7 @@ body:
     attributes:
       label: Suggested category
       options:
+        - Foundations & Canonical Benchmarks
         - Surveys & Perspectives
         - User Modeling & Preference Elicitation
         - Memory & Retrieval

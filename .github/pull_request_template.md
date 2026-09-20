@@ -1,5 +1,7 @@
 ## What changed?
 
+> Keep this PR focused. One paper or one coherent documentation change is easiest to review.
+
 - [ ] Add a paper
 - [ ] Update publication details or resource links
 - [ ] Correct metadata, tags, or categorization
@@ -11,6 +13,10 @@ Title / existing entry ID:
 Paper URL:
 Main category:
 Why this work fits the list:
+
+## Why is it in scope?
+
+<!-- In one or two sentences, connect the work to user-specific adaptation. -->
 
 ## Source verification
 
@@ -24,6 +30,7 @@ Sources supporting the metadata or corrections:
 - [ ] Paper summaries are factual and avoid unsupported claims.
 - [ ] I followed the entry format, allowed tags, and sorting rules.
 - [ ] I checked the links I added or changed.
+- [ ] I kept unrelated formatting changes out of this PR.
 
 For documentation-only changes, mark unrelated items as not applicable.
 
