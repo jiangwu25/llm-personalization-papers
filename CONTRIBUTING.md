@@ -11,7 +11,7 @@ Help keep this list useful, verifiable, and easy to read.
 > [!TIP]
 > The best contribution is small and source-backed: one paper, one correction, or one clearly scoped documentation improvement.
 
-## Choose a contribution path
+## 🧭 Choose a contribution path
 
 | You want to… | Use | Include |
 | --- | --- | --- |
@@ -20,7 +20,7 @@ Help keep this list useful, verifiable, and easy to read.
 | Fix a broken link or typo | Pull request | The smallest possible change and the replacement source |
 | Improve the reading route or docs | Pull request | The learner problem it solves and any links it adds |
 
-## What belongs here
+## 🎯 What belongs here
 
 The paper’s core research question should use user preferences, history, profiles, feedback, personal context, or user-specific goals to adapt a language model’s behavior, output, interaction, or decision.
 
@@ -40,7 +40,11 @@ Usually out of scope unless the paper makes the personalization connection expli
 
 For a boundary case, explain the direct connection in one or two sentences.
 
-## Entry format
+### Venue filter
+
+For the main index, non-survey papers must be formally published in one of the selected top/main venues: **ACL, EMNLP, NAACL, AAAI, SIGIR, or CIKM**. Surveys are the only exception and may remain preprints. We currently exclude workshop papers, Findings volumes, industry tracks, LREC papers, and preprint-only methods from the main index; they may still be useful as future candidates if the policy changes.
+
+## 🧩 Entry format
 
 Add each paper to one primary category inside the marked Paper Index section of `README.md`. Keep entries newest-first by first-public date; use the normalized ID as the tie-breaker.
 
@@ -56,7 +60,7 @@ Add each paper to one primary category inside the marked Paper Index section of 
 
 Use a DOI or canonical URL ID when no arXiv ID is available. Summaries should be neutral and supported by the paper; do not claim best performance, reproduction, or field-wide solutions. Omit `Resources` when no relevant verified link exists. Label third-party implementations as `Unofficial code`.
 
-## Five-minute checklist
+## ✅ Five-minute checklist
 
 - [ ] The work is not already indexed under another URL or version.
 - [ ] The paper has a stable abstract, proceedings, journal, or arXiv link.
@@ -66,7 +70,7 @@ Use a DOI or canonical URL ID when no arXiv ID is available. Summaries should be
 - [ ] The entry is in date/ID order and has no placeholder links.
 - [ ] I ran the validator and unit tests.
 
-## Controlled tags
+## 🏷️ Controlled tags
 
 Use one to three tags from this vocabulary. Add a new tag only through a PR that updates this list and explains the need.
 
@@ -79,7 +83,7 @@ Use one to three tags from this vocabulary. Add a new tag only through a PR that
 `privacy` `safety` `user-control`
 <!-- TAGS:END -->
 
-## Pull request checklist
+## 🔀 Pull request checklist
 
 Open a focused PR, usually one paper per PR; a small related batch is fine. The repository’s PR template will ask you to provide the paper URL, category, relevance, and metadata sources.
 
@@ -92,7 +96,7 @@ python3 -m unittest discover -s tests -v
 
 Keep unrelated formatting changes out of the same PR. Nothing is auto-merged: maintainers manually check relevance, source links, metadata, duplicates, neutral wording, and ordering.
 
-## Source verification
+## 🔍 Source verification
 
 Prefer this source order:
 
@@ -103,7 +107,7 @@ Prefer this source order:
 
 Verify the title, canonical link, stable ID, first-public date, publication status, relevance, summary, and optional resources. Do not upload PDFs, copy full abstracts, or reuse another list’s original descriptions.
 
-## Review and authorship
+## 🤝 Review and authorship
 
 For unclear boundary cases, maintainers may request a short relevance explanation. Rejections should give a concrete reason, such as out of scope, duplicate, unreliable source, or obvious spam. No fixed review time is promised.
 
