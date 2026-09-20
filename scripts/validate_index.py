@@ -14,8 +14,6 @@ from urllib.parse import urlsplit, urlunsplit
 
 PAPER_START = "<!-- PAPERS:START -->"
 PAPER_END = "<!-- PAPERS:END -->"
-BENCHMARK_START = "<!-- BENCHMARKS:START -->"
-BENCHMARK_END = "<!-- BENCHMARKS:END -->"
 TAGS_START = "<!-- TAGS:START -->"
 TAGS_END = "<!-- TAGS:END -->"
 CATEGORY_ORDER = (
@@ -41,7 +39,7 @@ COMPACT_ENTRY_RE = re.compile(
     r"^- \*\*\[(?P<title>.+?)\]\((?P<url>https?://[^)]+)\)\*\*\s+`(?P<publication>[^`]+)`\s*$"
 )
 FIELD_RE = re.compile(r"^\s+-\s+(?P<field>ID|First public|Publication|Summary|Tags|Resources):\s*(?P<value>.*)$")
-COMPACT_DATE_RE = re.compile(r"(?P<year>\d{4})(?:-(?P<month>\d{2}))?$")
+COMPACT_DATE_RE = re.compile(r"(?<!\d)(?P<year>\d{4})(?:-(?P<month>\d{2}))?(?!\d)")
 
 
 @dataclass
@@ -50,6 +48,7 @@ class PaperEntry:
     url: str
     line: int
     category: str = ""
+    subsection: str = ""
     paper_id: str = ""
     first_public: str = ""
     publication: str = ""
@@ -93,6 +92,7 @@ def _parse_entries(block: str, first_line: int) -> tuple[list[PaperEntry], list[
     parse_errors: list[str] = []
     current: PaperEntry | None = None
     last_field = ""
+    subsection = ""
 
     for offset, raw_line in enumerate(lines):
         line_number = first_line + offset
@@ -103,6 +103,13 @@ def _parse_entries(block: str, first_line: int) -> tuple[list[PaperEntry], list[
             last_field = ""
             category = re.sub(r"^[^\w]+", "", heading.group(1), flags=re.UNICODE).strip()
             categories.append(category)
+            subsection = ""
+            continue
+        subsection_heading = re.match(r"^####\s+(.+?)\s*$", line)
+        if subsection_heading:
+            current = None
+            last_field = ""
+            subsection = re.sub(r"^[^\w]+", "", subsection_heading.group(1), flags=re.UNICODE).strip()
             continue
         if line.startswith("<a ") or not line.strip():
             continue
@@ -116,6 +123,7 @@ def _parse_entries(block: str, first_line: int) -> tuple[list[PaperEntry], list[
                 url=compact_match.group("url"),
                 line=line_number,
                 category=categories[-1] if categories else "",
+                subsection=subsection,
                 paper_id=f"url:{compact_match.group('url')}",
                 first_public=first_public,
                 publication=publication,
@@ -131,6 +139,7 @@ def _parse_entries(block: str, first_line: int) -> tuple[list[PaperEntry], list[
                 url=entry_match.group("url"),
                 line=line_number,
                 category=categories[-1] if categories else "",
+                subsection=subsection,
             )
             entries.append(current)
             last_field = ""
@@ -181,28 +190,11 @@ def parse_papers(text: str) -> list[PaperEntry]:
     return entries
 
 
-def parse_benchmarks(text: str) -> list[PaperEntry]:
-    """Parse the broader benchmark catalog outside the curated paper index."""
-    block, first_line = parse_marked_block(text, BENCHMARK_START, BENCHMARK_END)
-    entries, _, parse_errors = _parse_entries(block, first_line)
-    if parse_errors:
-        raise ValueError("; ".join(parse_errors))
-    return entries
-
-
 def paper_signature(text: str) -> list[tuple[str, str, str]]:
     """Return ordered, language-independent metadata for synchronization checks."""
     return [
         (entry.title, normalize_paper_url(entry.url), entry.publication)
         for entry in parse_papers(text)
-    ]
-
-
-def benchmark_signature(text: str) -> list[tuple[str, str, str]]:
-    """Return ordered, language-independent metadata for the benchmark catalog."""
-    return [
-        (entry.title, normalize_paper_url(entry.url), entry.publication)
-        for entry in parse_benchmarks(text)
     ]
 
 
@@ -271,9 +263,11 @@ def validate_index(
     contributing_text: str,
     today: date,
     authorized_arxiv_ids: set[str] | None = None,
+    authorized_benchmark_urls: set[str] | None = None,
 ) -> ValidationReport:
     report = ValidationReport()
     authorized_arxiv_ids = authorized_arxiv_ids or set()
+    authorized_benchmark_urls = authorized_benchmark_urls or set()
     try:
         paper_block, first_line = parse_marked_block(readme_text, PAPER_START, PAPER_END)
     except ValueError as exc:
@@ -351,10 +345,14 @@ def validate_index(
         if entry.compact and not entry.publication.startswith("Survey"):
             venue = entry.publication.split()[0] if entry.publication.split() else ""
             identity = arxiv_identity(entry.url)
+            benchmark_exception = (
+                entry.category == "Foundations & Canonical Benchmarks"
+                and normalize_paper_url(entry.url) in authorized_benchmark_urls
+            )
             if venue.lower() == "arxiv":
-                if identity not in authorized_arxiv_ids:
+                if identity not in authorized_arxiv_ids and not benchmark_exception:
                     report.errors.append(f"{prefix}: preprint-only entry is not in the authorized exception ledger")
-            elif venue not in ALLOWED_VENUES:
+            elif venue not in ALLOWED_VENUES and not benchmark_exception:
                 report.errors.append(f"{prefix}: venue '{venue}' is outside the selected venue policy")
         for resource in entry.resources:
             if not re.fullmatch(r"https?://\S+", resource, re.IGNORECASE):
@@ -364,9 +362,13 @@ def validate_index(
         if not entry.compact and len(entry.summary.split()) == 0:
             report.errors.append(f"{prefix}: Summary cannot be empty")
 
-    for category, category_entries in by_category.items():
+    by_subsection: dict[tuple[str, str], list[PaperEntry]] = {}
+    for entry in entries:
+        by_subsection.setdefault((entry.category, entry.subsection), []).append(entry)
+    for (category, subsection), category_entries in by_subsection.items():
         if category_entries != sorted(category_entries, key=_sort_key):
-            report.errors.append(f"README.md: entries in '{category}' are not sorted by date and ID")
+            label = f"{category} / {subsection}" if subsection else category
+            report.errors.append(f"README.md: entries in '{label}' are not sorted by date and ID")
     if report.entry_count == 0:
         report.warnings.append("README.md: paper index is empty; structure is valid but content is not yet delivered")
     return report
@@ -378,6 +380,7 @@ def main() -> int:
     contributing_path = root / "CONTRIBUTING.md"
     exceptions_path = root / "docs" / "inclusion-exceptions.json"
     provenance_path = root / "docs" / "paper-provenance.json"
+    benchmark_catalog_path = root / "docs" / "benchmark-catalog.json"
     readme_text = readme_path.read_text(encoding="utf-8")
     authorized_arxiv_ids: set[str] = set()
     try:
@@ -392,14 +395,30 @@ def main() -> int:
         exception_error = ""
         if authorized_arxiv_ids != NAMED_PREPRINT_EXCEPTION_IDS:
             exception_error = "inclusion exception ledger must contain only the named PersonaMem-v2 exception"
+    try:
+        benchmark_catalog = json.loads(benchmark_catalog_path.read_text(encoding="utf-8"))
+        authorized_benchmark_urls = {
+            normalize_paper_url(item["canonical_url"])
+            for item in benchmark_catalog["entries"]
+        }
+    except (OSError, json.JSONDecodeError, KeyError, TypeError) as exc:
+        authorized_benchmark_urls = set()
+        benchmark_catalog_error = f"benchmark catalog ledger is invalid: {exc}"
+    else:
+        benchmark_catalog_error = ""
+        if len(authorized_benchmark_urls) != 22:
+            benchmark_catalog_error = "benchmark catalog ledger must contain 22 unique entries"
     report = validate_index(
         readme_text,
         contributing_path.read_text(encoding="utf-8"),
         date.today(),
         authorized_arxiv_ids,
+        authorized_benchmark_urls,
     )
     if exception_error:
         report.errors.append(exception_error)
+    if benchmark_catalog_error:
+        report.errors.append(benchmark_catalog_error)
     try:
         provenance = json.loads(provenance_path.read_text(encoding="utf-8"))
         provenance_by_id = {item["canonical_url"]: item for item in provenance["entries"]}
@@ -414,9 +433,6 @@ def main() -> int:
         report.errors.append(f"paper provenance ledger is invalid: {exc}")
     try:
         canonical_signature = paper_signature(readme_text)
-        canonical_benchmark_signature = benchmark_signature(readme_text)
-        if len(canonical_benchmark_signature) != len(set(canonical_benchmark_signature)):
-            report.errors.append("README.md: benchmark catalog contains duplicate entries")
         expected_count = len(canonical_signature)
         if paper_badge_count(readme_text) != expected_count:
             report.errors.append("README.md: paper-count badge does not match the parsed index")
@@ -428,8 +444,6 @@ def main() -> int:
             localized_text = localized_path.read_text(encoding="utf-8")
             if paper_signature(localized_text) != canonical_signature:
                 report.errors.append(f"{localized_name}: paper list is not synchronized with README.md")
-            if benchmark_signature(localized_text) != canonical_benchmark_signature:
-                report.errors.append(f"{localized_name}: benchmark catalog is not synchronized with README.md")
             if paper_badge_count(localized_text) != expected_count:
                 report.errors.append(f"{localized_name}: paper-count badge does not match the parsed index")
     except ValueError as exc:

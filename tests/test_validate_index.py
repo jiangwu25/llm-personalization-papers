@@ -100,15 +100,6 @@ class ValidatorTests(unittest.TestCase):
         changed = readme(compact_entry(publication="EMNLP 2025"))
         self.assertNotEqual(validate_index.paper_signature(canonical), validate_index.paper_signature(changed))
 
-    def test_benchmark_signature_ignores_localized_headings(self):
-        english = readme(compact_entry(), extra="""\n<!-- BENCHMARKS:START -->
-### Conference & Proceedings
-
-- **[A Benchmark](https://arxiv.org/abs/2501.00002)**  `ICLR 2025`
-<!-- BENCHMARKS:END -->""")
-        localized = english.replace("Conference & Proceedings", "会议与正式发表")
-        self.assertEqual(validate_index.benchmark_signature(english), validate_index.benchmark_signature(localized))
-
     def test_compact_entry_requires_year(self):
         report = validate_index.validate_index(readme(compact_entry(publication="ACL")), TAGS, date(2026, 9, 20))
         self.assertTrue(any("First public" in error for error in report.errors))

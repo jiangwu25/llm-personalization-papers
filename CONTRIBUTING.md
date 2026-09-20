@@ -43,7 +43,7 @@ For a boundary case, explain the direct connection in one or two sentences.
 
 ### Venue filter
 
-For the main index, non-survey papers must be formally published in one of the selected top/main venues: **ACL, EMNLP, NAACL, AAAI, SIGIR, or CIKM**. Surveys are the general exception and may remain preprints. A small number of explicitly approved benchmark preprints may also appear through the transparent [inclusion-exception ledger](docs/inclusion-exceptions.json); this is a named exception, not a general arXiv policy. We still exclude workshop papers, Findings volumes, industry tracks, LREC papers, and other preprint-only methods from the main index.
+For the main index, non-survey papers must be formally published in one of the selected top/main venues: **ACL, EMNLP, NAACL, AAAI, SIGIR, or CIKM**. Surveys are the general exception and may remain preprints. The Foundations & Canonical Benchmarks category also contains the named 22-entry batch recorded in [benchmark-catalog.json](docs/benchmark-catalog.json), preserving the real status of ICLR, COLM, Findings, Workshop, and arXiv records. PersonaMem-v2 remains separately covered by the transparent [inclusion-exception ledger](docs/inclusion-exceptions.json); this is a named benchmark scope, not a general arXiv policy. We still exclude unrelated workshop papers, Findings volumes, industry tracks, LREC papers, and other preprint-only methods from the main index.
 
 For entries whose venue was supplied by an author but is not yet independently represented by a public proceedings page, see the [paper provenance ledger](docs/paper-provenance.json). Do not invent a track, DOI, page number, or proceedings URL.
 

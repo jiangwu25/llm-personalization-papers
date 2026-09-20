@@ -1,6 +1,6 @@
 # Reading Guide
 
-This is a focused route through the index, not a ranking of paper quality. Surveys are included as orientation; the remaining entries follow the selected top/main conference venue policy listed in [CONTRIBUTING.md](../CONTRIBUTING.md#venue-filter), with only the explicitly named PersonaMem-v2 benchmark exception.
+This is a focused route through the index, not a ranking of paper quality. Surveys are included as orientation; most entries follow the selected top/main conference venue policy listed in [CONTRIBUTING.md](../CONTRIBUTING.md#venue-filter). The Foundations & Canonical Benchmarks section also includes the named 22-entry benchmark batch recorded in [benchmark-catalog.json](benchmark-catalog.json), where conference and arXiv status is shown explicitly.
 
 ## 🗺️ A compact route
 
