@@ -47,7 +47,7 @@ The foundations section intentionally includes pre-LLM personalized-dialogue wor
 
 For the main index, non-survey papers must be formally published in a selected top/main venue: **ACL, EMNLP, NAACL, AAAI, SIGIR, or CIKM**. The Foundations & Canonical Benchmarks section additionally contains the named 22-entry benchmark batch recorded in [benchmark-catalog.json](docs/benchmark-catalog.json), preserving each item’s real publication status. PersonaMem-v2 remains separately recorded in the [inclusion-exception ledger](docs/inclusion-exceptions.json); this does not open the index to unrelated preprint-only work. CARD and PsPLUG display EMNLP 2026 based on author-confirmed venue information recorded in the [provenance ledger](docs/paper-provenance.json); no track or proceedings URL is inferred.
 
-Workshop papers, Findings volumes, industry tracks, LREC papers, and other preprint-only work remain excluded. General RAG, generic agents, role-playing, and traditional recommendation papers are also out unless they explicitly study user-specific adaptation.
+Outside that named benchmark batch, workshop papers, Findings volumes, industry tracks, LREC papers, and other preprint-only work remain excluded. General RAG, generic agents, role-playing, and traditional recommendation papers are also out unless they explicitly study user-specific adaptation.
 
 See the [contribution guide](CONTRIBUTING.md) for the complete inclusion rules.
 
@@ -62,10 +62,14 @@ Found a missing paper, broken link, or incorrect venue? Open a focused [pull req
 
 Each paper stays on one line: **title link** followed by a compact `venue year` label.
 
+The first category is organized in three passes: historical roots, published conference records, and arXiv/preprint benchmarks.
+
 <!-- PAPERS:START -->
 
 <a id="foundations"></a>
 ### 🧱 Foundations & Canonical Benchmarks
+
+#### 📚 Historical Roots
 
 - **[Learning Implicit User Profiles for Personalized Retrieval-Based Chatbot](https://arxiv.org/abs/2108.07935)**  `CIKM 2021`
 - **[One Chatbot Per Person: Creating Personalized Chatbots based on Implicit User Profiles](https://arxiv.org/abs/2108.09355)**  `SIGIR 2021`
@@ -88,13 +92,13 @@ Each paper stays on one line: **title link** followed by a compact `venue year` 
 
 #### 🧪 arXiv & Preprints
 
-- **[Long Context, Less Focus: A Scaling Gap in LLMs Revealed through Privacy and Personalization](https://arxiv.org/abs/2602.15028)**  `arXiv 2026`
-- **[AlpsBench: An LLM Personalization Benchmark for Real-Dialogue Memorization and Preference Alignment](https://arxiv.org/abs/2603.26680)**  `arXiv 2026`
-- **[LUCid: Redefining Relevance For Lifelong Personalization](https://arxiv.org/abs/2604.26996)**  `arXiv 2026`
-- **[SovereignPA-Bench: Evaluating User-Owned Personal Agents under Evolving Intent, Platform Mediation, and Consent Constraints](https://arxiv.org/abs/2607.05363)**  `arXiv 2026`
-- **[LUNAR: Benchmarking Personalized Large Language Models on UNiversal User BehAvioR Logs](https://arxiv.org/abs/2608.05246)**  `arXiv 2026`
-- **[A Personalized Conversational Benchmark: Towards Simulating Personalized Conversations](https://arxiv.org/abs/2505.14106)**  `arXiv 2025`
-- **[LongLaMP: A Benchmark for Personalized Long-form Text Generation](https://arxiv.org/abs/2407.11016)**  `arXiv 2024`
+- **[LUNAR: Benchmarking Personalized Large Language Models on UNiversal User BehAvioR Logs](https://arxiv.org/abs/2608.05246)**  `arXiv 2026-08`
+- **[SovereignPA-Bench: Evaluating User-Owned Personal Agents under Evolving Intent, Platform Mediation, and Consent Constraints](https://arxiv.org/abs/2607.05363)**  `arXiv 2026-07`
+- **[LUCid: Redefining Relevance For Lifelong Personalization](https://arxiv.org/abs/2604.26996)**  `arXiv 2026-04`
+- **[AlpsBench: An LLM Personalization Benchmark for Real-Dialogue Memorization and Preference Alignment](https://arxiv.org/abs/2603.26680)**  `arXiv 2026-03`
+- **[Long Context, Less Focus: A Scaling Gap in LLMs Revealed through Privacy and Personalization](https://arxiv.org/abs/2602.15028)**  `arXiv 2026-02`
+- **[A Personalized Conversational Benchmark: Towards Simulating Personalized Conversations](https://arxiv.org/abs/2505.14106)**  `arXiv 2025-05`
+- **[LongLaMP: A Benchmark for Personalized Long-form Text Generation](https://arxiv.org/abs/2407.11016)**  `arXiv 2024-07`
 
 <a id="surveys"></a>
 ### 🔭 Surveys & Perspectives

@@ -47,7 +47,7 @@
 
 메인 목록의 비서베이 논문은 지정된 주요 학회의 메인 트랙인 **ACL, EMNLP, NAACL, AAAI, SIGIR, CIKM** 중 하나에 정식 게재되어야 합니다. 또한 “기반 연구와 대표 벤치마크” 분류에는 [benchmark-catalog.json](docs/benchmark-catalog.json)에 명시된 22개 benchmark를 실제 발표 상태 그대로 포함합니다. PersonaMem-v2는 [예외 원장](docs/inclusion-exceptions.json)에 별도로 기록된 유일한 명시적 프리프린트 예외이며, 다른 무관한 arXiv 논문까지 자동 허용하지 않습니다. CARD와 PsPLUG의 `EMNLP 2026` 표기는 저자가 확인한 정보이며, 자세한 내용은 [출처 원장](docs/paper-provenance.json)에 기록했습니다. 확인되지 않은 트랙이나 proceedings 링크는 추가하지 않습니다.
 
-워크숍, Findings, Industry Track, LREC 및 그 밖의 프리프린트 전용 방법론 논문은 계속 제외합니다. 사용자별 적응을 명시적으로 연구하지 않는 일반 RAG, 범용 에이전트, 역할극, 전통적 추천 연구도 범위 밖입니다.
+명시적으로 등록된 benchmark 묶음 외에는 워크숍, Findings, Industry Track, LREC 및 그 밖의 프리프린트 전용 방법론 논문을 계속 제외합니다. 사용자별 적응을 명시적으로 연구하지 않는 일반 RAG, 범용 에이전트, 역할극, 전통적 추천 연구도 범위 밖입니다.
 
 전체 기준은 [기여 가이드](CONTRIBUTING.md)를 확인해 주세요.
 
@@ -62,10 +62,14 @@
 
 각 논문은 한 줄로 표시됩니다. **제목 링크** 뒤에 간결한 `학회 연도` 라벨이 붙습니다.
 
+첫 번째 분류는 역사적 기반 연구, 정식 학회 발표 논문, arXiv/프리프린트 벤치마크의 세 층으로 구성됩니다.
+
 <!-- PAPERS:START -->
 
 <a id="foundations"></a>
 ### 🧱 기반 연구와 대표 벤치마크
+
+#### 📚 역사적 기반
 
 - **[Learning Implicit User Profiles for Personalized Retrieval-Based Chatbot](https://arxiv.org/abs/2108.07935)**  `CIKM 2021`
 - **[One Chatbot Per Person: Creating Personalized Chatbots based on Implicit User Profiles](https://arxiv.org/abs/2108.09355)**  `SIGIR 2021`
@@ -88,13 +92,13 @@
 
 #### 🧪 arXiv 및 프리프린트
 
-- **[Long Context, Less Focus: A Scaling Gap in LLMs Revealed through Privacy and Personalization](https://arxiv.org/abs/2602.15028)**  `arXiv 2026`
-- **[AlpsBench: An LLM Personalization Benchmark for Real-Dialogue Memorization and Preference Alignment](https://arxiv.org/abs/2603.26680)**  `arXiv 2026`
-- **[LUCid: Redefining Relevance For Lifelong Personalization](https://arxiv.org/abs/2604.26996)**  `arXiv 2026`
-- **[SovereignPA-Bench: Evaluating User-Owned Personal Agents under Evolving Intent, Platform Mediation, and Consent Constraints](https://arxiv.org/abs/2607.05363)**  `arXiv 2026`
-- **[LUNAR: Benchmarking Personalized Large Language Models on UNiversal User BehAvioR Logs](https://arxiv.org/abs/2608.05246)**  `arXiv 2026`
-- **[A Personalized Conversational Benchmark: Towards Simulating Personalized Conversations](https://arxiv.org/abs/2505.14106)**  `arXiv 2025`
-- **[LongLaMP: A Benchmark for Personalized Long-form Text Generation](https://arxiv.org/abs/2407.11016)**  `arXiv 2024`
+- **[LUNAR: Benchmarking Personalized Large Language Models on UNiversal User BehAvioR Logs](https://arxiv.org/abs/2608.05246)**  `arXiv 2026-08`
+- **[SovereignPA-Bench: Evaluating User-Owned Personal Agents under Evolving Intent, Platform Mediation, and Consent Constraints](https://arxiv.org/abs/2607.05363)**  `arXiv 2026-07`
+- **[LUCid: Redefining Relevance For Lifelong Personalization](https://arxiv.org/abs/2604.26996)**  `arXiv 2026-04`
+- **[AlpsBench: An LLM Personalization Benchmark for Real-Dialogue Memorization and Preference Alignment](https://arxiv.org/abs/2603.26680)**  `arXiv 2026-03`
+- **[Long Context, Less Focus: A Scaling Gap in LLMs Revealed through Privacy and Personalization](https://arxiv.org/abs/2602.15028)**  `arXiv 2026-02`
+- **[A Personalized Conversational Benchmark: Towards Simulating Personalized Conversations](https://arxiv.org/abs/2505.14106)**  `arXiv 2025-05`
+- **[LongLaMP: A Benchmark for Personalized Long-form Text Generation](https://arxiv.org/abs/2407.11016)**  `arXiv 2024-07`
 
 <a id="surveys"></a>
 ### 🔭 서베이와 관점

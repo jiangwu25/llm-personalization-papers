@@ -47,7 +47,7 @@
 
 主清单中的非综述论文必须正式发表于指定顶级会议的主会：**ACL、EMNLP、NAACL、AAAI、SIGIR 或 CIKM**。此外，“奠基工作与经典基准”分类包含[benchmark-catalog.json](docs/benchmark-catalog.json)中明确登记的 22 篇 benchmark，并保留各自真实发表状态。PersonaMem-v2 仍通过[例外台账](docs/inclusion-exceptions.json)单独记录；这不代表其他无关 arXiv 论文都可以加入。CARD 和 PsPLUG 的 `EMNLP 2026` 来自作者确认，具体记录见[来源台账](docs/paper-provenance.json)；没有推测 track 或 proceedings 链接。
 
-Workshop、Findings、Industry Track、LREC 和其他仅有预印本的方法论文仍不纳入主清单。通用 RAG、通用智能体、角色扮演和传统推荐论文，若未明确研究用户特定适配，也不在收录范围内。
+除这批明确登记的 benchmark 外，Workshop、Findings、Industry Track、LREC 和其他仅有预印本的方法论文仍不纳入主清单。通用 RAG、通用智能体、角色扮演和传统推荐论文，若未明确研究用户特定适配，也不在收录范围内。
 
 完整规则请参阅[贡献指南](CONTRIBUTING.md)。
 
@@ -62,10 +62,14 @@ Workshop、Findings、Industry Track、LREC 和其他仅有预印本的方法论
 
 每篇论文只占一行：**标题链接**，末尾附简洁的`会议 年份`标签。
 
+第一个分类按三层组织：历史奠基工作、正式发表的会议论文，以及 arXiv/预印本基准。
+
 <!-- PAPERS:START -->
 
 <a id="foundations"></a>
 ### 🧱 奠基工作与经典基准
+
+#### 📚 历史根基
 
 - **[Learning Implicit User Profiles for Personalized Retrieval-Based Chatbot](https://arxiv.org/abs/2108.07935)**  `CIKM 2021`
 - **[One Chatbot Per Person: Creating Personalized Chatbots based on Implicit User Profiles](https://arxiv.org/abs/2108.09355)**  `SIGIR 2021`
@@ -88,13 +92,13 @@ Workshop、Findings、Industry Track、LREC 和其他仅有预印本的方法论
 
 #### 🧪 arXiv 与预印本
 
-- **[Long Context, Less Focus: A Scaling Gap in LLMs Revealed through Privacy and Personalization](https://arxiv.org/abs/2602.15028)**  `arXiv 2026`
-- **[AlpsBench: An LLM Personalization Benchmark for Real-Dialogue Memorization and Preference Alignment](https://arxiv.org/abs/2603.26680)**  `arXiv 2026`
-- **[LUCid: Redefining Relevance For Lifelong Personalization](https://arxiv.org/abs/2604.26996)**  `arXiv 2026`
-- **[SovereignPA-Bench: Evaluating User-Owned Personal Agents under Evolving Intent, Platform Mediation, and Consent Constraints](https://arxiv.org/abs/2607.05363)**  `arXiv 2026`
-- **[LUNAR: Benchmarking Personalized Large Language Models on UNiversal User BehAvioR Logs](https://arxiv.org/abs/2608.05246)**  `arXiv 2026`
-- **[A Personalized Conversational Benchmark: Towards Simulating Personalized Conversations](https://arxiv.org/abs/2505.14106)**  `arXiv 2025`
-- **[LongLaMP: A Benchmark for Personalized Long-form Text Generation](https://arxiv.org/abs/2407.11016)**  `arXiv 2024`
+- **[LUNAR: Benchmarking Personalized Large Language Models on UNiversal User BehAvioR Logs](https://arxiv.org/abs/2608.05246)**  `arXiv 2026-08`
+- **[SovereignPA-Bench: Evaluating User-Owned Personal Agents under Evolving Intent, Platform Mediation, and Consent Constraints](https://arxiv.org/abs/2607.05363)**  `arXiv 2026-07`
+- **[LUCid: Redefining Relevance For Lifelong Personalization](https://arxiv.org/abs/2604.26996)**  `arXiv 2026-04`
+- **[AlpsBench: An LLM Personalization Benchmark for Real-Dialogue Memorization and Preference Alignment](https://arxiv.org/abs/2603.26680)**  `arXiv 2026-03`
+- **[Long Context, Less Focus: A Scaling Gap in LLMs Revealed through Privacy and Personalization](https://arxiv.org/abs/2602.15028)**  `arXiv 2026-02`
+- **[A Personalized Conversational Benchmark: Towards Simulating Personalized Conversations](https://arxiv.org/abs/2505.14106)**  `arXiv 2025-05`
+- **[LongLaMP: A Benchmark for Personalized Long-form Text Generation](https://arxiv.org/abs/2407.11016)**  `arXiv 2024-07`
 
 <a id="surveys"></a>
 ### 🔭 综述与观点
