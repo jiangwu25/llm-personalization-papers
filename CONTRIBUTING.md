@@ -46,19 +46,13 @@ For the main index, non-survey papers must be formally published in one of the s
 
 ## 🧩 Entry format
 
-Add each paper to one primary category inside the marked Paper Index section of `README.md`. Keep entries newest-first by first-public date; use the normalized ID as the tie-breaker.
+Add each paper to one primary category inside the marked Paper Index section of `README.md`. Keep the public list compact: one paper per line, with the venue and year at the end. Sort entries newest-first by year; use the normalized URL as the tie-breaker.
 
 ```markdown
-- **[Exact paper title](https://canonical-paper-url)**
-  - ID: `arxiv:XXXX.XXXXX`
-  - First public: `YYYY-MM`
-  - Publication: Preprint
-  - Summary: One factual sentence describing the problem and the main approach or contribution.
-  - Tags: `user-history` `retrieval`
-  - Resources: [Code](https://official-code-url)
+- **[Exact paper title](https://canonical-paper-url)** — ACL 2018
 ```
 
-Use a DOI or canonical URL ID when no arXiv ID is available. Summaries should be neutral and supported by the paper; do not claim best performance, reproduction, or field-wide solutions. Omit `Resources` when no relevant verified link exists. Label third-party implementations as `Unofficial code`.
+Use the official proceedings or publisher URL when available. The one-line label should use the formal venue and publication year, for example `ACL 2018`, `AAAI 2024`, or `Survey · 2025`. Keep summaries and implementation details in the paper itself or the reading guide rather than expanding the main index.
 
 ## ✅ Five-minute checklist
 
@@ -66,13 +60,13 @@ Use a DOI or canonical URL ID when no arXiv ID is available. Summaries should be
 - [ ] The paper has a stable abstract, proceedings, journal, or arXiv link.
 - [ ] The relevance to user-specific adaptation is explicit.
 - [ ] Title, date, publication status, and summary are source-backed.
-- [ ] The entry uses one primary category and one to three existing tags.
-- [ ] The entry is in date/ID order and has no placeholder links.
+- [ ] The entry uses one primary category and the compact one-line format.
+- [ ] The entry is in year/URL order and has no placeholder links.
 - [ ] I ran the validator and unit tests.
 
 ## 🏷️ Controlled tags
 
-Use one to three tags from this vocabulary. Add a new tag only through a PR that updates this list and explains the need.
+The compact README list does not display tags. This vocabulary is retained for future structured metadata and for maintainers who need consistent labels; add a new tag only through a PR that updates this list and explains the need.
 
 <!-- TAGS:START -->
 `foundations` `survey` `user-profile` `preference-elicitation` `user-history`

@@ -47,6 +47,15 @@ def entry(
     ).strip()
 
 
+def compact_entry(
+    *,
+    title="A Compact Paper",
+    publication="ACL 2025",
+    url="https://arxiv.org/abs/2501.00001",
+):
+    return f"- **[{title}]({url})** — {publication}"
+
+
 def readme(*entries, category="Memory & Retrieval", extra=""):
     lines = [
         "# Example",
@@ -76,6 +85,21 @@ class ValidatorTests(unittest.TestCase):
     def test_legal_entry_passes(self):
         report = self.assert_valid(readme(entry()))
         self.assertEqual(1, report.entry_count)
+
+    def test_compact_entry_passes(self):
+        report = self.assert_valid(readme(compact_entry()))
+        self.assertEqual(1, report.entry_count)
+
+    def test_compact_entry_requires_year(self):
+        report = validate_index.validate_index(readme(compact_entry(publication="ACL")), TAGS, date(2026, 9, 20))
+        self.assertTrue(any("First public" in error for error in report.errors))
+
+    def test_compact_entries_sort_by_publication_year(self):
+        newer = compact_entry(title="Newer", publication="EMNLP 2025", url="https://arxiv.org/abs/2501.00002")
+        older = compact_entry(title="Older", publication="ACL 2024", url="https://arxiv.org/abs/2401.00001")
+        self.assert_valid(readme(newer, older))
+        report = validate_index.validate_index(readme(older, newer), TAGS, date(2026, 9, 20))
+        self.assertTrue(any("sort" in error.lower() for error in report.errors))
 
     def test_missing_required_field_fails(self):
         invalid = readme(entry()).replace("  - Summary: A factual summary of the user-specific method.\n", "")

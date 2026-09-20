@@ -31,7 +31,11 @@ DATE_RE = re.compile(r"^(?P<year>\d{4})(?:-(?P<month>\d{2}))?$")
 URL_RE = re.compile(r"https?://[^\s)]+", re.IGNORECASE)
 LINK_RE = re.compile(r"\[[^\]]+\]\((https?://[^)]+)\)", re.IGNORECASE)
 ENTRY_RE = re.compile(r"^- \*\*\[(?P<title>.+?)\]\((?P<url>https?://[^)]+)\)\*\*\s*$")
+COMPACT_ENTRY_RE = re.compile(
+    r"^- \*\*\[(?P<title>.+?)\]\((?P<url>https?://[^)]+)\)\*\*\s+—\s+(?P<publication>.+?)\s*$"
+)
 FIELD_RE = re.compile(r"^\s+-\s+(?P<field>ID|First public|Publication|Summary|Tags|Resources):\s*(?P<value>.*)$")
+COMPACT_DATE_RE = re.compile(r"(?P<year>\d{4})(?:-(?P<month>\d{2}))?$")
 
 
 @dataclass
@@ -47,6 +51,7 @@ class PaperEntry:
     tags: tuple[str, ...] = ()
     resources: tuple[str, ...] = ()
     fields: dict[str, int] = field(default_factory=dict)
+    compact: bool = False
 
 
 @dataclass
@@ -93,6 +98,24 @@ def _parse_entries(block: str, first_line: int) -> tuple[list[PaperEntry], list[
             categories.append(heading.group(1))
             continue
         if line.startswith("<a ") or not line.strip():
+            continue
+        compact_match = COMPACT_ENTRY_RE.match(line)
+        if compact_match:
+            publication = compact_match.group("publication")
+            date_match = COMPACT_DATE_RE.search(publication)
+            first_public = date_match.group(0) if date_match else ""
+            current = PaperEntry(
+                title=compact_match.group("title"),
+                url=compact_match.group("url"),
+                line=line_number,
+                category=categories[-1] if categories else "",
+                paper_id=f"url:{compact_match.group('url')}",
+                first_public=first_public,
+                publication=publication,
+                compact=True,
+            )
+            entries.append(current)
+            last_field = ""
             continue
         entry_match = ENTRY_RE.match(line)
         if entry_match:
@@ -229,13 +252,9 @@ def validate_index(readme_text: str, contributing_text: str, today: date) -> Val
         report.category_counts[entry.category] = report.category_counts.get(entry.category, 0) + 1
         by_category.setdefault(entry.category, []).append(entry)
         prefix = f"README.md:{entry.line}"
-        required = {
-            "ID": entry.paper_id,
-            "First public": entry.first_public,
-            "Publication": entry.publication,
-            "Summary": entry.summary,
-            "Tags": entry.tags,
-        }
+        required = {"Publication": entry.publication, "First public": entry.first_public}
+        if not entry.compact:
+            required.update({"ID": entry.paper_id, "Summary": entry.summary, "Tags": entry.tags})
         for field_name, value in required.items():
             if not value:
                 report.errors.append(f"{prefix}: missing required {field_name} field")
@@ -243,7 +262,7 @@ def validate_index(readme_text: str, contributing_text: str, today: date) -> Val
             report.errors.append(f"{prefix}: entry is outside a known category")
         elif entry.category not in CATEGORY_ORDER:
             report.errors.append(f"{prefix}: unknown category '{entry.category}'")
-        if not _id_is_valid(entry.paper_id):
+        if not entry.compact and not _id_is_valid(entry.paper_id):
             report.errors.append(f"{prefix}: invalid stable ID '{entry.paper_id}'")
         normalized_id = entry.paper_id.lower()
         if normalized_id in seen_ids:
@@ -266,19 +285,20 @@ def validate_index(readme_text: str, contributing_text: str, today: date) -> Val
             year, known_month, month = parsed_date
             if year > today.year or (year == today.year and known_month and month > today.month):
                 report.errors.append(f"{prefix}: first-public date cannot be in the future")
-        if not 1 <= len(entry.tags) <= 3:
-            report.errors.append(f"{prefix}: Tags must contain 1–3 tags")
-        if len(entry.tags) != len(set(entry.tags)):
-            report.errors.append(f"{prefix}: repeated tag")
-        for tag in entry.tags:
-            if tag not in allowed_tags:
-                report.errors.append(f"{prefix}: unknown tag '{tag}'")
+        if not entry.compact:
+            if not 1 <= len(entry.tags) <= 3:
+                report.errors.append(f"{prefix}: Tags must contain 1–3 tags")
+            if len(entry.tags) != len(set(entry.tags)):
+                report.errors.append(f"{prefix}: repeated tag")
+            for tag in entry.tags:
+                if tag not in allowed_tags:
+                    report.errors.append(f"{prefix}: unknown tag '{tag}'")
         for resource in entry.resources:
             if not re.fullmatch(r"https?://\S+", resource, re.IGNORECASE):
                 report.errors.append(f"{prefix}: resource URL must be a complete HTTP(S) URL")
             if _placeholder(resource):
                 report.errors.append(f"{prefix}: placeholder URL is not allowed")
-        if len(entry.summary.split()) == 0:
+        if not entry.compact and len(entry.summary.split()) == 0:
             report.errors.append(f"{prefix}: Summary cannot be empty")
 
     for category, category_entries in by_category.items():
