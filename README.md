@@ -1,4 +1,3 @@
-<a id="top"></a>
 <div align="center">
 
 # 🧠 LLM Personalization Papers
@@ -13,9 +12,7 @@ User modeling · Memory · Retrieval · Preference alignment · Personalized age
 
 <br>
 
-[![English selected](https://img.shields.io/badge/English_%E2%9C%93-0969DA?style=for-the-badge)](README.md#top)
-[![简体中文](https://img.shields.io/badge/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-6E7781?style=for-the-badge)](README.zh-CN.md#top)
-[![한국어](https://img.shields.io/badge/%ED%95%9C%EA%B5%AD%EC%96%B4-6E7781?style=for-the-badge)](README.ko.md#top)
+<a href="README.md"><b>🇺🇸 English</b></a> · <a href="README.zh-CN.md">🇨🇳 简体中文</a> · <a href="README.ko.md">🇰🇷 한국어</a>
 
 </div>
 
