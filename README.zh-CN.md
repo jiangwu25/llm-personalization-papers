@@ -1,4 +1,3 @@
-<a id="top"></a>
 <div align="center">
 
 # 🧠 LLM 个性化论文精选
@@ -13,9 +12,7 @@
 
 <br>
 
-[![English](https://img.shields.io/badge/English-6E7781?style=for-the-badge)](README.md#top)
-[![简体中文 selected](https://img.shields.io/badge/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87_%E2%9C%93-0969DA?style=for-the-badge)](README.zh-CN.md#top)
-[![한국어](https://img.shields.io/badge/%ED%95%9C%EA%B5%AD%EC%96%B4-6E7781?style=for-the-badge)](README.ko.md#top)
+<a href="README.md">🇺🇸 English</a> · <a href="README.zh-CN.md"><b>🇨🇳 简体中文</b></a> · <a href="README.ko.md">🇰🇷 한국어</a>
 
 </div>
 
