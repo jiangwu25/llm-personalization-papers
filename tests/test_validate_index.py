@@ -53,7 +53,7 @@ def compact_entry(
     publication="ACL 2025",
     url="https://arxiv.org/abs/2501.00001",
 ):
-    return f"- **[{title}]({url})** — {publication}"
+    return f"- **[{title}]({url})**  `{publication}`"
 
 
 def readme(*entries, category="Memory & Retrieval", extra=""):
@@ -89,6 +89,16 @@ class ValidatorTests(unittest.TestCase):
     def test_compact_entry_passes(self):
         report = self.assert_valid(readme(compact_entry()))
         self.assertEqual(1, report.entry_count)
+
+    def test_paper_signature_ignores_localized_headings(self):
+        english = readme(compact_entry(), category="Memory & Retrieval")
+        localized = readme(compact_entry(), category="记忆与检索")
+        self.assertEqual(validate_index.paper_signature(english), validate_index.paper_signature(localized))
+
+    def test_paper_signature_detects_metadata_drift(self):
+        canonical = readme(compact_entry(publication="ACL 2025"))
+        changed = readme(compact_entry(publication="EMNLP 2025"))
+        self.assertNotEqual(validate_index.paper_signature(canonical), validate_index.paper_signature(changed))
 
     def test_compact_entry_requires_year(self):
         report = validate_index.validate_index(readme(compact_entry(publication="ACL")), TAGS, date(2026, 9, 20))
