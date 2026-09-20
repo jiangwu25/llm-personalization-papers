@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧠 LLM Personalization Papers
+# 🧠 Awesome LLM Personalization Papers
 
 **A curated, evidence-first reading list for language models that adapt to people.**
 
