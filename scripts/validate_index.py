@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import date
+import json
 from pathlib import Path
 import re
 import sys
@@ -26,6 +27,9 @@ CATEGORY_ORDER = (
     "Benchmarks & Evaluation",
     "Privacy, Safety & User Control",
 )
+ALLOWED_VENUES = {"ACL", "EMNLP", "NAACL", "AAAI", "SIGIR", "CIKM"}
+NAMED_PREPRINT_EXCEPTION_IDS = {"2512.06688"}
+PAPER_BADGE_RE = re.compile(r"papers-(?P<count>\d+)-[0-9A-Fa-f]{6}")
 FIELD_NAMES = {"ID", "First public", "Publication", "Summary", "Tags", "Resources"}
 DATE_RE = re.compile(r"^(?P<year>\d{4})(?:-(?P<month>\d{2}))?$")
 URL_RE = re.compile(r"https?://[^\s)]+", re.IGNORECASE)
@@ -183,6 +187,12 @@ def paper_signature(text: str) -> list[tuple[str, str, str]]:
     ]
 
 
+def paper_badge_count(text: str) -> int | None:
+    """Read the paper-count badge from a README, if present."""
+    match = PAPER_BADGE_RE.search(text)
+    return int(match.group("count")) if match else None
+
+
 def normalize_paper_url(url: str) -> str:
     """Normalize only stable URL details needed for duplicate detection."""
     parsed = urlsplit(url.strip())
@@ -193,7 +203,18 @@ def normalize_paper_url(url: str) -> str:
         match = re.search(r"/(?:abs|pdf)/(\d{4}\.\d{4,5})(?:v\d+)?(?:\.pdf)?/?$", path, re.IGNORECASE)
         if match:
             return f"https://arxiv.org/abs/{match.group(1)}"
+    if host == "doi.org":
+        match = re.search(r"/10\.48550/arxiv\.(\d{4}\.\d{4,5})(?:v\d+)?/?$", path, re.IGNORECASE)
+        if match:
+            return f"https://arxiv.org/abs/{match.group(1)}"
     return urlunsplit((scheme, host, path.rstrip("/"), parsed.query, parsed.fragment))
+
+
+def arxiv_identity(url: str) -> str | None:
+    """Return a canonical arXiv identifier for abs/pdf/DOI-like URL variants."""
+    normalized = normalize_paper_url(url)
+    match = re.search(r"https?://arxiv\.org/abs/(\d{4}\.\d{4,5})$", normalized, re.IGNORECASE)
+    return match.group(1) if match else None
 
 
 def _id_is_valid(paper_id: str) -> bool:
@@ -226,8 +247,14 @@ def _placeholder(url: str) -> bool:
     return host in {"example.com", "example.org", "example.net", "localhost"} or "example.com" in url.lower()
 
 
-def validate_index(readme_text: str, contributing_text: str, today: date) -> ValidationReport:
+def validate_index(
+    readme_text: str,
+    contributing_text: str,
+    today: date,
+    authorized_arxiv_ids: set[str] | None = None,
+) -> ValidationReport:
     report = ValidationReport()
+    authorized_arxiv_ids = authorized_arxiv_ids or set()
     try:
         paper_block, first_line = parse_marked_block(readme_text, PAPER_START, PAPER_END)
     except ValueError as exc:
@@ -302,6 +329,14 @@ def validate_index(readme_text: str, contributing_text: str, today: date) -> Val
             for tag in entry.tags:
                 if tag not in allowed_tags:
                     report.errors.append(f"{prefix}: unknown tag '{tag}'")
+        if entry.compact and not entry.publication.startswith("Survey"):
+            venue = entry.publication.split()[0] if entry.publication.split() else ""
+            identity = arxiv_identity(entry.url)
+            if venue.lower() == "arxiv":
+                if identity not in authorized_arxiv_ids:
+                    report.errors.append(f"{prefix}: preprint-only entry is not in the authorized exception ledger")
+            elif venue not in ALLOWED_VENUES:
+                report.errors.append(f"{prefix}: venue '{venue}' is outside the selected venue policy")
         for resource in entry.resources:
             if not re.fullmatch(r"https?://\S+", resource, re.IGNORECASE):
                 report.errors.append(f"{prefix}: resource URL must be a complete HTTP(S) URL")
@@ -322,17 +357,57 @@ def main() -> int:
     root = Path(__file__).resolve().parents[1]
     readme_path = root / "README.md"
     contributing_path = root / "CONTRIBUTING.md"
+    exceptions_path = root / "docs" / "inclusion-exceptions.json"
+    provenance_path = root / "docs" / "paper-provenance.json"
     readme_text = readme_path.read_text(encoding="utf-8")
-    report = validate_index(readme_text, contributing_path.read_text(encoding="utf-8"), date.today())
+    authorized_arxiv_ids: set[str] = set()
+    try:
+        exceptions = json.loads(exceptions_path.read_text(encoding="utf-8"))
+        for exception in exceptions.get("exceptions", []):
+            if exception.get("status") == "approved" and exception.get("identity_type") == "arxiv":
+                authorized_arxiv_ids.add(exception["canonical_id"])
+    except (OSError, json.JSONDecodeError, KeyError, TypeError) as exc:
+        authorized_arxiv_ids = set()
+        exception_error = f"inclusion exception ledger is invalid: {exc}"
+    else:
+        exception_error = ""
+        if authorized_arxiv_ids != NAMED_PREPRINT_EXCEPTION_IDS:
+            exception_error = "inclusion exception ledger must contain only the named PersonaMem-v2 exception"
+    report = validate_index(
+        readme_text,
+        contributing_path.read_text(encoding="utf-8"),
+        date.today(),
+        authorized_arxiv_ids,
+    )
+    if exception_error:
+        report.errors.append(exception_error)
+    try:
+        provenance = json.loads(provenance_path.read_text(encoding="utf-8"))
+        provenance_by_id = {item["canonical_url"]: item for item in provenance["entries"]}
+        for canonical_url in (
+            "https://arxiv.org/abs/2601.06352",
+            "https://arxiv.org/abs/2601.06362",
+        ):
+            evidence = provenance_by_id.get(canonical_url, {}).get("publication_evidence", {})
+            if evidence.get("type") != "author_confirmed_venue" or evidence.get("venue") != "EMNLP" or evidence.get("year") != 2026:
+                report.errors.append(f"paper provenance missing author-confirmed EMNLP 2026 evidence for {canonical_url}")
+    except (OSError, json.JSONDecodeError, KeyError, TypeError) as exc:
+        report.errors.append(f"paper provenance ledger is invalid: {exc}")
     try:
         canonical_signature = paper_signature(readme_text)
+        expected_count = len(canonical_signature)
+        if paper_badge_count(readme_text) != expected_count:
+            report.errors.append("README.md: paper-count badge does not match the parsed index")
         for localized_name in ("README.zh-CN.md", "README.ko.md"):
             localized_path = root / localized_name
             if not localized_path.exists():
                 report.errors.append(f"{localized_name}: missing localized README")
                 continue
-            if paper_signature(localized_path.read_text(encoding="utf-8")) != canonical_signature:
+            localized_text = localized_path.read_text(encoding="utf-8")
+            if paper_signature(localized_text) != canonical_signature:
                 report.errors.append(f"{localized_name}: paper list is not synchronized with README.md")
+            if paper_badge_count(localized_text) != expected_count:
+                report.errors.append(f"{localized_name}: paper-count badge does not match the parsed index")
     except ValueError as exc:
         report.errors.append(f"localized README synchronization failed: {exc}")
     if report.errors:

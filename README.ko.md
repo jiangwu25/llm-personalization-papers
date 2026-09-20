@@ -7,7 +7,7 @@
 사용자 모델링 · 메모리 · 검색 · 선호 정렬 · 개인화 에이전트 · 평가
 
 [![Validate index](https://github.com/jiangwu25/llm-personalization-papers/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/jiangwu25/llm-personalization-papers/actions/workflows/validate.yml)
-[![Papers](https://img.shields.io/badge/papers-17-5B8FF9?style=flat-square)](#paper-index)
+[![Papers](https://img.shields.io/badge/papers-32-5B8FF9?style=flat-square)](#paper-index)
 [![License](https://img.shields.io/badge/license-MIT-22A06B?style=flat-square)](LICENSE)
 
 <br>
@@ -26,7 +26,8 @@
   <a href="#memory-retrieval">🧠 메모리</a> ·
   <a href="#training-alignment">🎯 정렬</a> ·
   <a href="#agents-applications">🤖 에이전트</a> ·
-  <a href="#benchmarks-evaluation">📊 평가</a>
+  <a href="#benchmarks-evaluation">📊 평가</a> ·
+  <a href="#privacy-safety">🛡️ 프라이버시</a>
 </p>
 
 ## ✨ 컬렉션 둘러보기
@@ -44,7 +45,9 @@
 
 기반 연구 섹션에는 LLM 이전의 개인화 대화 연구도 의도적으로 포함했습니다. 이 연구들은 이후 LLM 개인화가 이어받은 페르소나 조건화, 대규모 페르소나 데이터, 암묵적 사용자 프로필의 토대를 마련했습니다.
 
-메인 목록의 비서베이 논문은 지정된 주요 학회의 메인 트랙인 **ACL, EMNLP, NAACL, AAAI, SIGIR, CIKM** 중 하나에 정식 게재되어야 합니다. 서베이만 예외입니다. 워크숍, Findings, Industry Track, LREC 및 프리프린트로만 공개된 방법론 논문은 제외합니다. 사용자별 적응을 명시적으로 연구하지 않는 일반 RAG, 범용 에이전트, 역할극, 전통적 추천 연구도 범위 밖입니다.
+메인 목록의 비서베이 논문은 지정된 주요 학회의 메인 트랙인 **ACL, EMNLP, NAACL, AAAI, SIGIR, CIKM** 중 하나에 정식 게재되어야 합니다. 서베이는 일반적인 예외입니다. PersonaMem-v2는 명시적으로 승인된 유일한 벤치마크 프리프린트 예외로 [예외 원장](docs/inclusion-exceptions.json)에 기록되어 있으며, 다른 arXiv 논문까지 자동으로 허용하지 않습니다. CARD와 PsPLUG의 `EMNLP 2026` 표기는 저자가 확인한 정보이며, 자세한 내용은 [출처 원장](docs/paper-provenance.json)에 기록했습니다. 확인되지 않은 트랙이나 proceedings 링크는 추가하지 않습니다.
+
+워크숍, Findings, Industry Track, LREC 및 그 밖의 프리프린트 전용 방법론 논문은 계속 제외합니다. 사용자별 적응을 명시적으로 연구하지 않는 일반 RAG, 범용 에이전트, 역할극, 전통적 추천 연구도 범위 밖입니다.
 
 전체 기준은 [기여 가이드](CONTRIBUTING.md)를 확인해 주세요.
 
@@ -75,27 +78,36 @@
 - **[A Survey on Personalized and Pluralistic Preference Alignment in Large Language Models](https://arxiv.org/abs/2504.07070)**  `Survey · 2025-04`
 - **[A Survey of Personalized Large Language Models: Progress and Future Directions](https://arxiv.org/abs/2502.11528)**  `Survey · 2025-02`
 - **[Personalization of Large Language Models: A Survey](https://arxiv.org/abs/2411.00027)**  `Survey · 2024-10`
+- **[Two Tales of Persona in LLMs: A Survey of Role-Playing and Personalization](https://aclanthology.org/2024.findings-emnlp.969/)**  `Survey · Findings EMNLP 2024`
 
 <a id="user-modeling"></a>
 ### 👤 사용자 모델링과 선호 파악
 
+- **[Decisive: Guiding User Decisions with Optimal Preference Elicitation from Unstructured Documents](https://aclanthology.org/2026.acl-long.1465/)**  `ACL 2026`
 - **[Optimizing User Profiles via Contextual Bandits for Retrieval-Augmented LLM Personalization](https://aclanthology.org/2026.acl-long.1467/)**  `ACL 2026`
+- **[Value Profiles for Encoding Human Variation](https://aclanthology.org/2025.emnlp-main.106/)**  `EMNLP 2025`
 
 <a id="memory-retrieval"></a>
 ### 🧠 메모리와 검색
 
+- **[In Prospect and Retrospect: Reflective Memory Management for Long-term Personalized Dialogue Agents](https://aclanthology.org/2025.acl-long.413/)**  `ACL 2025`
 - **[PRIME: Large Language Model Personalization with Cognitive Dual-Memory and Personalized Thought Process](https://aclanthology.org/2025.emnlp-main.1711/)**  `EMNLP 2025`
+- **[Optimization Methods for Personalizing Large Language Models through Retrieval Augmentation](https://arxiv.org/abs/2404.05970)**  `SIGIR 2024`
 - **[MemoryBank: Enhancing Large Language Models with Long-Term Memory](https://ojs.aaai.org/index.php/AAAI/article/view/29946)**  `AAAI 2024`
 
 <a id="inference-time"></a>
 ### 🎛️ 프롬프팅, 조향과 디코딩
 
+- **[Do Implicit Personalization and Explicit Styles Conflict? PsPLUG: A Lightweight Plug-in for Balancing Personalization and Style in Customized LLMs](https://arxiv.org/abs/2601.06362)**  `EMNLP 2026`
+- **[Personalized Text Generation with Contrastive Activation Steering](https://aclanthology.org/2025.acl-long.353/)**  `ACL 2025`
 - **[Personalized LLM Decoding via Contrasting Personal Preference](https://aclanthology.org/2025.emnlp-main.1723/)**  `EMNLP 2025`
 
 <a id="training-alignment"></a>
 ### 🎯 파인튜닝과 개인화 정렬
 
+- **[CARD: Cluster-level Adaptation with Reward-guided Decoding for Personalized Text Generation](https://arxiv.org/abs/2601.06352)**  `EMNLP 2026`
 - **[FaST: Feature-aware Sampling and Tuning for Personalized Preference Alignment with Limited Data](https://aclanthology.org/2025.emnlp-main.475/)**  `EMNLP 2025`
+- **[MiCRo: Mixture Modeling and Context-aware Routing for Personalized Preference Learning](https://aclanthology.org/2025.emnlp-main.882/)**  `EMNLP 2025`
 - **[Personalized Pieces: Efficient Personalized Large Language Models through Collaborative Efforts](https://aclanthology.org/2024.emnlp-main.371/)**  `EMNLP 2024`
 - **[Democratizing Large Language Models via Personalized Parameter-Efficient Fine-tuning](https://aclanthology.org/2024.emnlp-main.372/)**  `EMNLP 2024`
 
@@ -103,12 +115,22 @@
 ### 🤖 개인화 에이전트와 응용
 
 - **[Language Models Don’t Know What You Want: Evaluating Personalization in Deep Research Needs Real Users](https://aclanthology.org/2026.acl-long.723/)**  `ACL 2026`
+- **[Orion: Steering Personalized Web Agents via Global-Micro Profiling and Adaptive Intent Tracking](https://ojs.aaai.org/index.php/AAAI/article/view/40188)**  `AAAI 2026`
 - **[Crafting Personalized Agents through Retrieval-Augmented Generation on Editable Memory Graphs](https://aclanthology.org/2024.emnlp-main.281/)**  `EMNLP 2024`
 
 <a id="benchmarks-evaluation"></a>
 ### 📊 벤치마크와 평가
 
+- **[PersonaMem-v2: Towards Personalized Intelligence via Learning Implicit User Personas and Agentic Memory](https://arxiv.org/abs/2512.06688)**  `arXiv 2025-12`
+- **[LaMP-QA: A Benchmark for Personalized Long-form Question Answering](https://aclanthology.org/2025.emnlp-main.60/)**  `EMNLP 2025`
 - **[LaMP: When Large Language Models Meet Personalization](https://aclanthology.org/2024.acl-long.399/)**  `ACL 2024`
+- **[Evaluating Very Long-Term Conversational Memory of LLM Agents](https://aclanthology.org/2024.acl-long.747/)**  `ACL 2024`
+
+<a id="privacy-safety"></a>
+### 🛡️ 프라이버시, 안전과 사용자 제어
+
+- **[PRISP: Privacy-Safe Few-Shot Personalization via Lightweight Adaptation](https://aclanthology.org/2026.acl-long.1146/)**  `ACL 2026`
+- **[Personalized Language Models via Privacy-Preserving Evolutionary Model Merging](https://aclanthology.org/2025.emnlp-main.1747/)**  `EMNLP 2025`
 
 <!-- PAPERS:END -->
 

@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "notes": [
+    "Public arXiv and proceedings pages support titles, links, and research descriptions.",
+    "CARD and PsPLUG display EMNLP 2026 because the authors confirmed that venue in the submission context; this is not an independent proceedings verification.",
+    "No track, DOI, page number, or proceedings URL is inferred when the source does not provide it."
+  ],
+  "entries": [
+    {
+      "canonical_url": "https://arxiv.org/abs/2512.06688",
+      "title": "PersonaMem-v2: Towards Personalized Intelligence via Learning Implicit User Personas and Agentic Memory",
+      "category": "benchmarks-evaluation",
+      "sources": [
+        "https://arxiv.org/abs/2512.06688",
+        "https://github.com/bowen-upenn/PersonaMem-v2",
+        "https://huggingface.co/datasets/bowen-upenn/PersonaMem-v2"
+      ],
+      "publication_evidence": {
+        "type": "maintainer_exception",
+        "status": "preprint_only",
+        "display_publication": "arXiv 2025-12",
+        "exception_id": "2512.06688"
+      }
+    },
+    {
+      "canonical_url": "https://arxiv.org/abs/2601.06352",
+      "title": "CARD: Cluster-level Adaptation with Reward-guided Decoding for Personalized Text Generation",
+      "category": "training-alignment",
+      "sources": [
+        "https://arxiv.org/abs/2601.06352",
+        "https://arxiv.org/abs/2601.06352v2"
+      ],
+      "publication_evidence": {
+        "type": "author_confirmed_venue",
+        "venue": "EMNLP",
+        "year": 2026,
+        "independent_proceedings_verification": false,
+        "note": "Venue supplied by the paper author; public arXiv verifies title and research content."
+      }
+    },
+    {
+      "canonical_url": "https://arxiv.org/abs/2601.06362",
+      "title": "Do Implicit Personalization and Explicit Styles Conflict? PsPLUG: A Lightweight Plug-in for Balancing Personalization and Style in Customized LLMs",
+      "category": "inference-time",
+      "sources": [
+        "https://arxiv.org/abs/2601.06362",
+        "https://arxiv.org/abs/2601.06362v2",
+        "https://arxiv.org/html/2601.06362v2"
+      ],
+      "publication_evidence": {
+        "type": "author_confirmed_venue",
+        "venue": "EMNLP",
+        "year": 2026,
+        "independent_proceedings_verification": false,
+        "note": "Venue supplied by the paper author; public arXiv verifies the current title and research content."
+      }
+    }
+  ]
+}
