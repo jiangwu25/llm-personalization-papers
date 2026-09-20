@@ -1,0 +1,49 @@
+name: Suggest a paper
+description: Suggest a relevant paper without editing Markdown.
+title: "[Paper] "
+body:
+  - type: input
+    id: paper_title
+    attributes:
+      label: Paper title
+      description: Use the complete title from the paper.
+    validations:
+      required: true
+  - type: input
+    id: paper_url
+    attributes:
+      label: Paper URL
+      description: Use a stable abstract, proceedings, journal, or arXiv URL.
+    validations:
+      required: true
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Why does it fit?
+      description: Explain the direct connection to LLM personalization in one or two sentences.
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Suggested category
+      options:
+        - Surveys & Perspectives
+        - User Modeling & Preference Elicitation
+        - Memory & Retrieval
+        - Prompting, Steering & Decoding
+        - Fine-tuning & Personalized Alignment
+        - Personalized Agents & Applications
+        - Benchmarks & Evaluation
+        - Privacy, Safety & User Control
+        - Not sure
+  - type: textarea
+    id: resources
+    attributes:
+      label: Related resources
+      description: Optionally provide official code, data, or project links.
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Optionally provide publication details or your relationship to the paper.
