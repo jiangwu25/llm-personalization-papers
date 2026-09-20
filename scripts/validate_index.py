@@ -32,7 +32,7 @@ URL_RE = re.compile(r"https?://[^\s)]+", re.IGNORECASE)
 LINK_RE = re.compile(r"\[[^\]]+\]\((https?://[^)]+)\)", re.IGNORECASE)
 ENTRY_RE = re.compile(r"^- \*\*\[(?P<title>.+?)\]\((?P<url>https?://[^)]+)\)\*\*\s*$")
 COMPACT_ENTRY_RE = re.compile(
-    r"^- \*\*\[(?P<title>.+?)\]\((?P<url>https?://[^)]+)\)\*\*\s+—\s+(?P<publication>.+?)\s*$"
+    r"^- \*\*\[(?P<title>.+?)\]\((?P<url>https?://[^)]+)\)\*\*\s+`(?P<publication>[^`]+)`\s*$"
 )
 FIELD_RE = re.compile(r"^\s+-\s+(?P<field>ID|First public|Publication|Summary|Tags|Resources):\s*(?P<value>.*)$")
 COMPACT_DATE_RE = re.compile(r"(?P<year>\d{4})(?:-(?P<month>\d{2}))?$")
@@ -95,7 +95,8 @@ def _parse_entries(block: str, first_line: int) -> tuple[list[PaperEntry], list[
         if heading:
             current = None
             last_field = ""
-            categories.append(heading.group(1))
+            category = re.sub(r"^[^\w]+", "", heading.group(1), flags=re.UNICODE).strip()
+            categories.append(category)
             continue
         if line.startswith("<a ") or not line.strip():
             continue
@@ -172,6 +173,14 @@ def parse_papers(text: str) -> list[PaperEntry]:
     if parse_errors:
         raise ValueError("; ".join(parse_errors))
     return entries
+
+
+def paper_signature(text: str) -> list[tuple[str, str, str]]:
+    """Return ordered, language-independent metadata for synchronization checks."""
+    return [
+        (entry.title, normalize_paper_url(entry.url), entry.publication)
+        for entry in parse_papers(text)
+    ]
 
 
 def normalize_paper_url(url: str) -> str:
@@ -313,7 +322,19 @@ def main() -> int:
     root = Path(__file__).resolve().parents[1]
     readme_path = root / "README.md"
     contributing_path = root / "CONTRIBUTING.md"
-    report = validate_index(readme_path.read_text(encoding="utf-8"), contributing_path.read_text(encoding="utf-8"), date.today())
+    readme_text = readme_path.read_text(encoding="utf-8")
+    report = validate_index(readme_text, contributing_path.read_text(encoding="utf-8"), date.today())
+    try:
+        canonical_signature = paper_signature(readme_text)
+        for localized_name in ("README.zh-CN.md", "README.ko.md"):
+            localized_path = root / localized_name
+            if not localized_path.exists():
+                report.errors.append(f"{localized_name}: missing localized README")
+                continue
+            if paper_signature(localized_path.read_text(encoding="utf-8")) != canonical_signature:
+                report.errors.append(f"{localized_name}: paper list is not synchronized with README.md")
+    except ValueError as exc:
+        report.errors.append(f"localized README synchronization failed: {exc}")
     if report.errors:
         for error in report.errors:
             print(f"ERROR: {error}")

@@ -27,7 +27,8 @@ The paper’s core research question should use user preferences, history, profi
 We welcome:
 
 - foundational persona and user-modeling work;
-- preprints, published papers, surveys, benchmarks, datasets, applications, and negative results;
+- published papers in the selected venues, plus survey preprints;
+- benchmarks, datasets, applications, and negative results that meet the venue filter;
 - methods based on prompting, retrieval, memory, fine-tuning, preference learning, decoding, or agents;
 - work on privacy, safety, fairness, leakage, and user control in personalization.
 
@@ -49,7 +50,7 @@ For the main index, non-survey papers must be formally published in one of the s
 Add each paper to one primary category inside the marked Paper Index section of `README.md`. Keep the public list compact: one paper per line, with the venue and year at the end. Sort entries newest-first by year; use the normalized URL as the tie-breaker.
 
 ```markdown
-- **[Exact paper title](https://canonical-paper-url)** — ACL 2018
+- **[Exact paper title](https://canonical-paper-url)**  `ACL 2018`
 ```
 
 Use the official proceedings or publisher URL when available. The one-line label should use the formal venue and publication year, for example `ACL 2018`, `AAAI 2024`, or `Survey · 2025`. Keep summaries and implementation details in the paper itself or the reading guide rather than expanding the main index.
