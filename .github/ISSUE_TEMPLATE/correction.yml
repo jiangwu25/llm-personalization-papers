@@ -1,0 +1,33 @@
+name: Correct or update an entry
+description: Report incorrect metadata, duplicates, broken links, or publication updates.
+title: "[Correction] "
+body:
+  - type: input
+    id: entry
+    attributes:
+      label: Existing entry title or ID
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and suggested correction
+      description: Describe what is wrong and what should change.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Supporting source or reproducible problem
+      description: Link the source that supports the correction, or explain how to reproduce the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: replacement_resources
+    attributes:
+      label: Replacement resource links
+      description: Optionally provide corrected code, data, or project links.
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
