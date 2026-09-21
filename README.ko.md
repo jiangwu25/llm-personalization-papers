@@ -21,12 +21,13 @@
 </p>
 
 <p align="center">
-  <a href="#foundations">🧱 기반 연구</a> ·
+  <a href="#benchmarks-evaluation">📊 벤치마크</a> ·
   <a href="#surveys">🔭 서베이</a> ·
+  <a href="#user-modeling">👤 사용자 모델링</a> ·
   <a href="#memory-retrieval">🧠 메모리</a> ·
+  <a href="#inference-time">🎛️ 추론</a> ·
   <a href="#training-alignment">🎯 정렬</a> ·
   <a href="#agents-applications">🤖 에이전트</a> ·
-  <a href="#benchmarks-evaluation">📊 평가</a> ·
   <a href="#privacy-safety">🛡️ 프라이버시</a> ·
   <a href="#root-classics">🌳 기반</a>
 </p>
@@ -37,16 +38,16 @@
 
 **시스템을 만들고 있나요?** [메모리와 검색](#memory-retrieval), [개인화 정렬](#training-alignment), [에이전트와 응용](#agents-applications)으로 바로 이동해 보세요.
 
-**방법론을 비교하고 싶나요?** [기반 연구](#foundations)와 [벤치마크 및 평가](#benchmarks-evaluation)부터 시작하는 것을 권합니다.
+**방법론을 비교하고 싶나요?** [벤치마크 및 평가](#benchmarks-evaluation)부터 본 뒤 아래의 방법별 분류를 살펴보세요.
 
 <details>
 <summary><b>🎯 범위와 선정 기준</b></summary>
 
 이 목록은 사용자의 선호, 기록, 프로필, 피드백, 개인적 맥락 또는 사용자별 목표가 언어 모델의 행동, 출력, 상호작용이나 의사결정에 영향을 주는 연구를 다룹니다. 방법론, 데이터셋, 벤치마크, 응용뿐 아니라 개인정보 보호, 안전, 편향, 사용자 제어에 관한 연구도 포함합니다.
 
-기반 연구 섹션에는 LLM 이전의 개인화 대화 연구도 의도적으로 포함했습니다. 이 연구들은 이후 LLM 개인화가 이어받은 페르소나 조건화, 대규모 페르소나 데이터, 암묵적 사용자 프로필의 토대를 마련했습니다.
+Root & Classics 섹션에는 LLM 이전의 개인화 대화 연구도 의도적으로 포함했습니다. 이 연구들은 이후 LLM 개인화가 이어받은 페르소나 조건화, 대규모 페르소나 데이터, 암묵적 사용자 프로필의 토대를 마련했습니다.
 
-학회 논문, 워크숍, Findings, 데이터셋, 벤치마크, arXiv 프리프린트를 포함해 관련 연구의 제안을 환영합니다. 메인 목록은 2026년 이후의 최신 연구를 중심으로 합니다. 일부 2025년 논문도 포함합니다. 새 논문 제안은 2026년 이후를 대상으로 합니다. 2025년 이전의 진정한 기반 연구와 대표 벤치마크는 목록 마지막의 Root & Classics에 보존합니다. 저자 본인의 연구도 적극 환영합니다. 관련성과 발표 상태를 확인할 수 있는 정식 출처와 충분한 맥락을 함께 제공해 주세요.
+학회 논문, 워크숍, Findings, 데이터셋, 벤치마크, arXiv 프리프린트를 포함해 관련 연구의 제안을 환영합니다. 메인 목록은 2026년 이후의 최신 연구를 중심으로 합니다. 일부 2025년 논문도 포함합니다. 새 논문 제안은 2026년 이후를 대상으로 합니다. 대표 벤치마크는 연도와 관계없이 벤치마크와 평가 섹션에 모읍니다. 그 밖의 진정한 2025년 이전 기반 연구는 목록 마지막의 Root & Classics에 보존합니다. 저자 본인의 연구도 적극 환영합니다. 관련성과 발표 상태를 확인할 수 있는 정식 출처와 충분한 맥락을 함께 제공해 주세요.
 
 제출 형식과 검토 기준은 [기여 가이드](CONTRIBUTING.md)를 확인해 주세요.
 
@@ -61,34 +62,33 @@
 
 각 논문은 한 줄로 표시됩니다. **제목 링크** 뒤에 간결한 `학회 연도` 라벨이 붙습니다.
 
-활성 목록은 2026년 이후의 최신 연구를 먼저 보여 줍니다. 일부 2025년 논문도 포함하며, 2025년 이전의 대표 기반 연구는 마지막에 모았습니다.
+벤치마크와 평가는 맨 앞에 모아 최신순으로 정렬했습니다. 나머지 논문은 방법별로 분류했습니다. 2025년 이전의 대표 기반 연구는 목록 마지막에 배치했습니다.
 
 <!-- PAPERS:START -->
 
-<a id="foundations"></a>
-### 🧱 기반 연구와 대표 벤치마크
-
-#### 🏛️ 학회 및 정식 발표
-
-- **[When Personalization Misleads: Understanding and Mitigating Hallucinations in Personalized LLMs](https://aclanthology.org/2026.findings-acl.395/)**  `Findings ACL 2026`
-- **[PersonalAlign: Hierarchical Implicit Intent Alignment for Personalized GUI Agent with Long-Term User-Centric Records](https://arxiv.org/abs/2601.09636)**  `ACL 2026 Main`
-- **[PrefDisco: Benchmarking Proactive Personalized Reasoning](https://proceedings.iclr.cc/paper_files/paper/2026/hash/82d50077a0e140b524a18f380c95d55a-Abstract-Conference.html)**  `ICLR 2026`
-- **[Evaluating Personalized Tool-Augmented LLMs from the Perspectives of Personalization and Proactivity](https://aclanthology.org/2025.acl-long.1064/)**  `ACL 2025`
-- **[PersonaBench: Evaluating AI Models on Understanding Personal Information through Accessing (Synthetic) Private User Data](https://aclanthology.org/2025.findings-acl.49/)**  `Findings ACL 2025`
-- **[PersonaLens: A Benchmark for Personalization Evaluation in Conversational AI Assistants](https://aclanthology.org/2025.findings-acl.927/)**  `Findings ACL 2025`
-- **[LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory](https://arxiv.org/abs/2410.10813)**  `ICLR 2025`
-- **[Know Me, Respond to Me: Benchmarking LLMs for Dynamic User Profiling and Personalized Responses at Scale](https://arxiv.org/abs/2504.14225)**  `COLM 2025`
-- **[Do LLMs Recognize Your Preferences? Evaluating Personalized Preference Following in LLMs](https://proceedings.iclr.cc/paper_files/paper/2025/hash/28a46044775d97a4efcbcf14e7f13209-Abstract-Conference.html)**  `ICLR 2025`
-- **[PersonalLLM: Tailoring LLMs to Individual Preferences](https://proceedings.iclr.cc/paper_files/paper/2025/hash/a730abbcd6cf4a371ca9545db5922442-Abstract-Conference.html)**  `ICLR 2025`
-
-#### 🧪 arXiv 및 프리프린트
+<a id="benchmarks-evaluation"></a>
+### 📊 벤치마크와 평가
 
 - **[LUNAR: Benchmarking Personalized Large Language Models on UNiversal User BehAvioR Logs](https://arxiv.org/abs/2608.05246)**  `arXiv 2026-08`
 - **[SovereignPA-Bench: Evaluating User-Owned Personal Agents under Evolving Intent, Platform Mediation, and Consent Constraints](https://arxiv.org/abs/2607.05363)**  `arXiv 2026-07`
 - **[LUCid: Redefining Relevance For Lifelong Personalization](https://arxiv.org/abs/2604.26996)**  `arXiv 2026-04`
 - **[AlpsBench: An LLM Personalization Benchmark for Real-Dialogue Memorization and Preference Alignment](https://arxiv.org/abs/2603.26680)**  `arXiv 2026-03`
 - **[Long Context, Less Focus: A Scaling Gap in LLMs Revealed through Privacy and Personalization](https://arxiv.org/abs/2602.15028)**  `arXiv 2026-02`
+- **[When Personalization Misleads: Understanding and Mitigating Hallucinations in Personalized LLMs](https://aclanthology.org/2026.findings-acl.395/)**  `Findings ACL 2026`
+- **[PersonalAlign: Hierarchical Implicit Intent Alignment for Personalized GUI Agent with Long-Term User-Centric Records](https://arxiv.org/abs/2601.09636)**  `ACL 2026 Main`
+- **[PrefDisco: Benchmarking Proactive Personalized Reasoning](https://proceedings.iclr.cc/paper_files/paper/2026/hash/82d50077a0e140b524a18f380c95d55a-Abstract-Conference.html)**  `ICLR 2026`
+- **[PersonaMem-v2: Towards Personalized Intelligence via Learning Implicit User Personas and Agentic Memory](https://arxiv.org/abs/2512.06688)**  `arXiv 2025-12`
 - **[A Personalized Conversational Benchmark: Towards Simulating Personalized Conversations](https://arxiv.org/abs/2505.14106)**  `arXiv 2025-05`
+- **[Evaluating Personalized Tool-Augmented LLMs from the Perspectives of Personalization and Proactivity](https://aclanthology.org/2025.acl-long.1064/)**  `ACL 2025`
+- **[LaMP-QA: A Benchmark for Personalized Long-form Question Answering](https://aclanthology.org/2025.emnlp-main.60/)**  `EMNLP 2025`
+- **[PersonaBench: Evaluating AI Models on Understanding Personal Information through Accessing (Synthetic) Private User Data](https://aclanthology.org/2025.findings-acl.49/)**  `Findings ACL 2025`
+- **[PersonaLens: A Benchmark for Personalization Evaluation in Conversational AI Assistants](https://aclanthology.org/2025.findings-acl.927/)**  `Findings ACL 2025`
+- **[LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory](https://arxiv.org/abs/2410.10813)**  `ICLR 2025`
+- **[Know Me, Respond to Me: Benchmarking LLMs for Dynamic User Profiling and Personalized Responses at Scale](https://arxiv.org/abs/2504.14225)**  `COLM 2025`
+- **[Do LLMs Recognize Your Preferences? Evaluating Personalized Preference Following in LLMs](https://proceedings.iclr.cc/paper_files/paper/2025/hash/28a46044775d97a4efcbcf14e7f13209-Abstract-Conference.html)**  `ICLR 2025`
+- **[PersonalLLM: Tailoring LLMs to Individual Preferences](https://proceedings.iclr.cc/paper_files/paper/2025/hash/a730abbcd6cf4a371ca9545db5922442-Abstract-Conference.html)**  `ICLR 2025`
+- **[LaMP: When Large Language Models Meet Personalization](https://aclanthology.org/2024.acl-long.399/)**  `ACL 2024`
+- **[Evaluating Very Long-Term Conversational Memory of LLM Agents](https://aclanthology.org/2024.acl-long.747/)**  `ACL 2024`
 
 <a id="surveys"></a>
 ### 🔭 서베이와 관점
@@ -131,12 +131,6 @@
 - **[Language Models Don’t Know What You Want: Evaluating Personalization in Deep Research Needs Real Users](https://aclanthology.org/2026.acl-long.723/)**  `ACL 2026`
 - **[Orion: Steering Personalized Web Agents via Global-Micro Profiling and Adaptive Intent Tracking](https://ojs.aaai.org/index.php/AAAI/article/view/40188)**  `AAAI 2026`
 
-<a id="benchmarks-evaluation"></a>
-### 📊 벤치마크와 평가
-
-- **[PersonaMem-v2: Towards Personalized Intelligence via Learning Implicit User Personas and Agentic Memory](https://arxiv.org/abs/2512.06688)**  `arXiv 2025-12`
-- **[LaMP-QA: A Benchmark for Personalized Long-form Question Answering](https://aclanthology.org/2025.emnlp-main.60/)**  `EMNLP 2025`
-
 <a id="privacy-safety"></a>
 ### 🛡️ 프라이버시, 안전과 사용자 제어
 
@@ -148,8 +142,6 @@
 
 #### 📚 2025년 이전의 대표 고전
 
-- **[LaMP: When Large Language Models Meet Personalization](https://aclanthology.org/2024.acl-long.399/)**  `ACL 2024`
-- **[Evaluating Very Long-Term Conversational Memory of LLM Agents](https://aclanthology.org/2024.acl-long.747/)**  `ACL 2024`
 - **[MemoryBank: Enhancing Large Language Models with Long-Term Memory](https://ojs.aaai.org/index.php/AAAI/article/view/29946)**  `AAAI 2024`
 - **[Learning Implicit User Profiles for Personalized Retrieval-Based Chatbot](https://arxiv.org/abs/2108.07935)**  `CIKM 2021`
 - **[One Chatbot Per Person: Creating Personalized Chatbots based on Implicit User Profiles](https://arxiv.org/abs/2108.09355)**  `SIGIR 2021`

@@ -17,14 +17,13 @@ PAPER_END = "<!-- PAPERS:END -->"
 TAGS_START = "<!-- TAGS:START -->"
 TAGS_END = "<!-- TAGS:END -->"
 CATEGORY_ORDER = (
-    "Foundations & Canonical Benchmarks",
+    "Benchmarks & Evaluation",
     "Surveys & Perspectives",
     "User Modeling & Preference Elicitation",
     "Memory & Retrieval",
     "Prompting, Steering & Decoding",
     "Fine-tuning & Personalized Alignment",
     "Personalized Agents & Applications",
-    "Benchmarks & Evaluation",
     "Privacy, Safety & User Control",
     "Root & Classics",
 )
@@ -347,7 +346,7 @@ def validate_index(
             venue = entry.publication.split()[0] if entry.publication.split() else ""
             identity = arxiv_identity(entry.url)
             benchmark_exception = (
-                entry.category == "Foundations & Canonical Benchmarks"
+                entry.category == "Benchmarks & Evaluation"
                 and normalize_paper_url(entry.url) in authorized_benchmark_urls
             )
             if venue.lower() == "arxiv":
@@ -370,6 +369,16 @@ def validate_index(
         if category_entries != sorted(category_entries, key=_sort_key):
             label = f"{category} / {subsection}" if subsection else category
             report.errors.append(f"README.md: entries in '{label}' are not sorted by date and ID")
+    if authorized_benchmark_urls:
+        indexed_benchmark_urls = {
+            normalize_paper_url(entry.url)
+            for entry in entries
+            if entry.category == "Benchmarks & Evaluation"
+        }
+        if indexed_benchmark_urls != authorized_benchmark_urls:
+            report.errors.append(
+                "README.md: Benchmarks & Evaluation must exactly match the benchmark catalog ledger"
+            )
     if report.entry_count == 0:
         report.warnings.append("README.md: paper index is empty; structure is valid but content is not yet delivered")
     return report

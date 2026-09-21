@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "scope": "Named benchmark catalog for the curated benchmark expansion and root references. This does not broaden the venue policy for unrelated papers.",
+  "scope": "Named benchmark catalog backing the unified Benchmarks & Evaluation section. This does not broaden the venue policy for unrelated papers.",
   "entries": [
     {"canonical_url": "https://aclanthology.org/2024.acl-long.399/", "title": "LaMP: When Large Language Models Meet Personalization", "publication": "ACL 2024"},
     {"canonical_url": "https://aclanthology.org/2025.emnlp-main.60/", "title": "LaMP-QA: A Benchmark for Personalized Long-form Question Answering", "publication": "EMNLP 2025"},

@@ -121,6 +121,28 @@ class ValidatorTests(unittest.TestCase):
         )
         self.assertEqual([], report.errors)
 
+    def test_benchmark_catalog_entry_must_stay_in_benchmark_section(self):
+        url = "https://arxiv.org/abs/2601.00001"
+        paper = compact_entry(publication="arXiv 2026-01", url=url)
+        authorized = {validate_index.normalize_paper_url(url)}
+        report = validate_index.validate_index(
+            readme(paper, category="Benchmarks & Evaluation"),
+            TAGS,
+            date(2026, 9, 20),
+            set(),
+            authorized,
+        )
+        self.assertEqual([], report.errors)
+
+        misplaced = validate_index.validate_index(
+            readme(paper, category="Memory & Retrieval"),
+            TAGS,
+            date(2026, 9, 20),
+            set(),
+            authorized,
+        )
+        self.assertTrue(any("benchmark catalog" in error.lower() for error in misplaced.errors))
+
     def test_compact_entries_sort_by_publication_year(self):
         newer = compact_entry(title="Newer", publication="EMNLP 2025", url="https://arxiv.org/abs/2501.00002")
         older = compact_entry(title="Older", publication="ACL 2024", url="https://arxiv.org/abs/2401.00001")
