@@ -27,8 +27,8 @@ The paper’s core research question should use user preferences, history, profi
 We welcome:
 
 - foundational persona and user-modeling work;
-- published papers in the selected venues, plus survey preprints and named benchmark exceptions;
-- benchmarks, datasets, applications, and negative results that meet the venue filter;
+- recent papers, benchmarks, datasets, applications, and negative results from 2025 onward;
+- genuinely foundational pre-2025 papers and canonical benchmarks in the Root & Classics section;
 - methods based on prompting, retrieval, memory, fine-tuning, preference learning, decoding, or agents;
 - work on privacy, safety, fairness, leakage, and user control in personalization.
 
@@ -41,9 +41,13 @@ Usually out of scope unless the paper makes the personalization connection expli
 
 For a boundary case, explain the direct connection in one or two sentences.
 
+### 📅 Recency policy
+
+The active index emphasizes work from 2025 onward. New paper submissions should be from 2026 onward. Pre-2025 work is reserved for Root & Classics when it is genuinely foundational or a canonical benchmark; surveys remain available as orientation across publication years.
+
 ### Venue filter
 
-For the main index, non-survey papers must be formally published in one of the selected top/main venues: **ACL, EMNLP, NAACL, AAAI, SIGIR, or CIKM**. Surveys are the general exception and may remain preprints. The Foundations & Canonical Benchmarks category also contains the named 22-entry batch recorded in [benchmark-catalog.json](docs/benchmark-catalog.json), preserving the real status of ICLR, COLM, Findings, Workshop, and arXiv records. PersonaMem-v2 remains separately covered by the transparent [inclusion-exception ledger](docs/inclusion-exceptions.json); this is a named benchmark scope, not a general arXiv policy. We still exclude unrelated workshop papers, Findings volumes, industry tracks, LREC papers, and other preprint-only methods from the main index.
+For the main index, non-survey papers must be formally published in one of the selected top/main venues: **ACL, EMNLP, NAACL, AAAI, SIGIR, or CIKM**. Surveys are the general exception and may remain preprints. The curated benchmark set is recorded in [benchmark-catalog.json](docs/benchmark-catalog.json), while pre-2025 canonical references are placed under Root & Classics. PersonaMem-v2 remains separately covered by the transparent [inclusion-exception ledger](docs/inclusion-exceptions.json). Do not treat these named records as a blanket admission rule for unrelated work.
 
 For entries whose venue was supplied by an author but is not yet independently represented by a public proceedings page, see the [paper provenance ledger](docs/paper-provenance.json). Do not invent a track, DOI, page number, or proceedings URL.
 

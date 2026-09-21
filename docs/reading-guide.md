@@ -1,6 +1,6 @@
 # Reading Guide
 
-This is a focused route through the index, not a ranking of paper quality. Surveys are included as orientation; most entries follow the selected top/main conference venue policy listed in [CONTRIBUTING.md](../CONTRIBUTING.md#venue-filter). The Foundations & Canonical Benchmarks section also includes the named 22-entry benchmark batch recorded in [benchmark-catalog.json](benchmark-catalog.json), where conference and arXiv status is shown explicitly.
+This is a focused route through the index, not a ranking of paper quality. The active index emphasizes 2025+ work; genuinely foundational pre-2025 references are grouped at the end under Root & Classics, while surveys remain available as orientation. Source and venue details are recorded according to the policy in [CONTRIBUTING.md](../CONTRIBUTING.md).
 
 ## 🗺️ A compact route
 
@@ -10,7 +10,7 @@ This is a focused route through the index, not a ranking of paper quality. Surve
 | 2. Implicit profiles | Can history reveal a user’s style and preferences? | [Learning Implicit User Profiles](https://arxiv.org/abs/2108.07935) |
 | 3. LLM benchmark | How do we measure personalization across tasks and users? | [LaMP](https://aclanthology.org/2024.acl-long.399/) |
 | 4. Memory | What should be stored, retrieved, updated, or forgotten? | [MemoryBank](https://ojs.aaai.org/index.php/AAAI/article/view/29946) |
-| 5. Alignment | How can a model learn an individual’s preferences efficiently? | [Personalized Pieces](https://aclanthology.org/2024.emnlp-main.371/) |
+| 5. Alignment | How can a model learn an individual’s preferences efficiently? | [FaST](https://aclanthology.org/2025.emnlp-main.475/) |
 | 6. Agents | How does a user model change planning and tool use? | [Language Models Don’t Know What You Want](https://aclanthology.org/2026.acl-long.723/) |
 | 7. Control and safety | How do style, privacy, and user control constrain personalization? | [PsPLUG](https://arxiv.org/abs/2601.06362) |
 
@@ -50,15 +50,9 @@ This is a focused route through the index, not a ranking of paper quality. Surve
 
 - **[In Prospect and Retrospect: Reflective Memory Management for Long-term Personalized Dialogue Agents](https://aclanthology.org/2025.acl-long.413/)** — Compare reflective memory construction with retrieval alone; the agent framing does not change its primary memory contribution.
 
-- **[Optimization Methods for Personalizing Large Language Models through Retrieval Augmentation](https://arxiv.org/abs/2404.05970)** — Focus on how retrieval itself is optimized for personalization, not merely on adding more history to a prompt.
-
 ## 4. 🎛️ Study fine-tuning and alignment
 
 - **[FaST: Feature-aware Sampling and Tuning for Personalized Preference Alignment with Limited Data](https://aclanthology.org/2025.emnlp-main.475/)** — Index ID `url:https://aclanthology.org/2025.emnlp-main.475/`. Focus on the limited-data setting and the way feature-aware sampling changes personalized preference alignment.
-
-- **[Personalized Pieces: Efficient Personalized Large Language Models through Collaborative Efforts](https://aclanthology.org/2024.emnlp-main.371/)** — Index ID `url:https://aclanthology.org/2024.emnlp-main.371/`. Focus on the systems trade-off between sharing reusable PEFT pieces and preserving user-specific behavior.
-
-- **[Democratizing Large Language Models via Personalized Parameter-Efficient Fine-tuning](https://aclanthology.org/2024.emnlp-main.372/)** — Index ID `url:https://aclanthology.org/2024.emnlp-main.372/`. Compare per-user PEFT ownership with retrieval and profile-based personalization.
 
 - **[CARD: Cluster-level Adaptation with Reward-guided Decoding for Personalized Text Generation](https://arxiv.org/abs/2601.06352)** — Pair group-level LoRA sharing with user-specific preference learning. Read it alongside OPPU to compare shared adaptation, per-user adaptation, and inference-time correction; do not call it training-free.
 
@@ -67,8 +61,6 @@ This is a focused route through the index, not a ranking of paper quality. Surve
 ## 5. 🤖 Finish with personalized agents
 
 - **[Language Models Don’t Know What You Want: Evaluating Personalization in Deep Research Needs Real Users](https://aclanthology.org/2026.acl-long.723/)** — Index ID `url:https://aclanthology.org/2026.acl-long.723/`. Examine why real-user profiles and approval-aware planning matter in personalized deep research.
-
-- **[Crafting Personalized Agents through Retrieval-Augmented Generation on Editable Memory Graphs](https://aclanthology.org/2024.emnlp-main.281/)** — Index ID `url:https://aclanthology.org/2024.emnlp-main.281/`. Study how editable memory graphs connect user history to an assistant application.
 
 - **[Orion: Steering Personalized Web Agents via Global-Micro Profiling and Adaptive Intent Tracking](https://ojs.aaai.org/index.php/AAAI/article/view/40188)** — Use this as an action-oriented contrast: personalized planning and intent tracking matter when the system changes the web actions it takes, not only the text it writes.
 

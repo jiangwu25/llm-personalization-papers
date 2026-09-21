@@ -26,6 +26,7 @@ CATEGORY_ORDER = (
     "Personalized Agents & Applications",
     "Benchmarks & Evaluation",
     "Privacy, Safety & User Control",
+    "Root & Classics",
 )
 ALLOWED_VENUES = {"ACL", "EMNLP", "NAACL", "AAAI", "SIGIR", "CIKM"}
 NAMED_PREPRINT_EXCEPTION_IDS = {"2512.06688"}
@@ -406,8 +407,8 @@ def main() -> int:
         benchmark_catalog_error = f"benchmark catalog ledger is invalid: {exc}"
     else:
         benchmark_catalog_error = ""
-        if len(authorized_benchmark_urls) != 22:
-            benchmark_catalog_error = "benchmark catalog ledger must contain 22 unique entries"
+        if len(authorized_benchmark_urls) != 20:
+            benchmark_catalog_error = "benchmark catalog ledger must contain 20 unique entries"
     report = validate_index(
         readme_text,
         contributing_path.read_text(encoding="utf-8"),
