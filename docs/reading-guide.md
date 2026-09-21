@@ -1,6 +1,6 @@
 # Reading Guide
 
-This is a focused route through the index, not a ranking of paper quality. The active index emphasizes 2025+ work; genuinely foundational pre-2025 references are grouped at the end under Root & Classics, while surveys remain available as orientation. Source and venue details are recorded according to the policy in [CONTRIBUTING.md](../CONTRIBUTING.md).
+This is a focused route through the index, not a ranking of paper quality. The active index emphasizes the latest 2026+ work. Selected 2025 papers are also included. Genuinely foundational pre-2025 references are grouped at the end under Root & Classics, while surveys remain available as orientation. Source and venue details are recorded according to the policy in [CONTRIBUTING.md](../CONTRIBUTING.md).
 
 ## 🗺️ A compact route
 
@@ -34,7 +34,7 @@ This is a focused route through the index, not a ranking of paper quality. The a
 
 - **[Personalization of Large Language Models: A Survey](https://arxiv.org/abs/2411.00027)** — Index ID `arxiv:2411.00027`. Start here for the vocabulary: who is personalized, what is personalized, and where personalization enters the system.
 
-- **[Two Tales of Persona in LLMs: A Survey of Role-Playing and Personalization](https://aclanthology.org/2024.findings-emnlp.969/)** — Use this to separate role-playing from user-centered personalization; it is retained as a survey despite its Findings venue.
+- **[Two Tales of Persona in LLMs: A Survey of Role-Playing and Personalization](https://aclanthology.org/2024.findings-emnlp.969/)** — Use this to separate role-playing from user-centered personalization. It is retained as a survey despite its Findings venue.
 
 - **[LaMP: When Large Language Models Meet Personalization](https://aclanthology.org/2024.acl-long.399/)** — Index ID `arxiv:2304.11406`. It provides seven personalized tasks across classification and generation, plus retrieval-augmentation baselines. Keep separate a general task score from a score that depends on a particular user’s history.
 
@@ -48,13 +48,13 @@ This is a focused route through the index, not a ranking of paper quality. The a
 
 - **[PRIME: Large Language Model Personalization with Cognitive Dual-Memory and Personalized Thought Process](https://aclanthology.org/2025.emnlp-main.1711/)** — Index ID `url:https://aclanthology.org/2025.emnlp-main.1711/`. Compare episodic interaction memory with semantic user beliefs, and ask what each memory type contributes.
 
-- **[In Prospect and Retrospect: Reflective Memory Management for Long-term Personalized Dialogue Agents](https://aclanthology.org/2025.acl-long.413/)** — Compare reflective memory construction with retrieval alone; the agent framing does not change its primary memory contribution.
+- **[In Prospect and Retrospect: Reflective Memory Management for Long-term Personalized Dialogue Agents](https://aclanthology.org/2025.acl-long.413/)** — Compare reflective memory construction with retrieval alone. The agent framing does not change its primary memory contribution.
 
 ## 4. 🎛️ Study fine-tuning and alignment
 
 - **[FaST: Feature-aware Sampling and Tuning for Personalized Preference Alignment with Limited Data](https://aclanthology.org/2025.emnlp-main.475/)** — Index ID `url:https://aclanthology.org/2025.emnlp-main.475/`. Focus on the limited-data setting and the way feature-aware sampling changes personalized preference alignment.
 
-- **[CARD: Cluster-level Adaptation with Reward-guided Decoding for Personalized Text Generation](https://arxiv.org/abs/2601.06352)** — Pair group-level LoRA sharing with user-specific preference learning. Read it alongside OPPU to compare shared adaptation, per-user adaptation, and inference-time correction; do not call it training-free.
+- **[CARD: Cluster-level Adaptation with Reward-guided Decoding for Personalized Text Generation](https://arxiv.org/abs/2601.06352)** — Pair group-level LoRA sharing with user-specific preference learning. Read it alongside OPPU to compare shared adaptation, per-user adaptation, and inference-time correction. Do not call it training-free.
 
 - **[MiCRo: Mixture Modeling and Context-aware Routing for Personalized Preference Learning](https://aclanthology.org/2025.emnlp-main.882/)** — Separate mixture-based preference modeling and context routing from claims about recovering every individual value.
 
@@ -66,7 +66,7 @@ This is a focused route through the index, not a ranking of paper quality. The a
 
 ## 6. 🎛️ Compare prompting, steering, and decoding
 
-- **[Personalized Text Generation with Contrastive Activation Steering](https://aclanthology.org/2025.acl-long.353/)** — Compare activation-level control with prompt and retrieval-based personalization; do not treat style control as a complete user model.
+- **[Personalized Text Generation with Contrastive Activation Steering](https://aclanthology.org/2025.acl-long.353/)** — Compare activation-level control with prompt and retrieval-based personalization. Do not treat style control as a complete user model.
 
 - **[PsPLUG: A Lightweight Plug-in for Balancing Personalization and Style in Customized LLMs](https://arxiv.org/abs/2601.06362)** — Study the conflict between explicit style instructions and implicit preferences, plus inference-time control of personalization strength. The plug-in is learned, so it is not fully training-free.
 
@@ -76,4 +76,4 @@ This is a focused route through the index, not a ranking of paper quality. The a
 
 - **[Personalized Language Models via Privacy-Preserving Evolutionary Model Merging](https://aclanthology.org/2025.emnlp-main.1747/)** — Compare privacy–utility trade-offs in model merging. Do not confuse PriME with the existing PRIME dual-memory paper.
 
-- **[Evaluating Very Long-Term Conversational Memory of LLM Agents](https://aclanthology.org/2024.acl-long.747/)** — Use as a memory-capability boundary case; generated and human-checked conversations are not the same as real long-term user logs.
+- **[Evaluating Very Long-Term Conversational Memory of LLM Agents](https://aclanthology.org/2024.acl-long.747/)** — Use as a memory-capability boundary case. Generated and human-checked conversations are not the same as real long-term user logs.

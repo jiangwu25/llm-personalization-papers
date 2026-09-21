@@ -46,7 +46,7 @@ This index covers research where user preferences, history, profiles, feedback, 
 
 The foundations section intentionally includes pre-LLM personalized-dialogue work. These papers established persona conditioning, large-scale persona data, and implicit user profiles that later LLM-personalization research builds on.
 
-Submissions are welcome, including conference papers, workshop papers, Findings papers, datasets, benchmarks, and preprints. The active list emphasizes work from 2025 onward; new paper submissions should be from 2026 onward. Genuinely foundational pre-2025 papers and canonical benchmarks are retained at the end under Root & Classics. Authors are especially encouraged to submit their own work with a canonical source and enough context for readers to verify relevance and publication status.
+Submissions are welcome, including conference papers, workshop papers, Findings papers, datasets, benchmarks, and preprints. The active list emphasizes the latest work from 2026 onward. It also includes selected papers from 2025. New paper submissions should be from 2026 onward. Genuinely foundational pre-2025 papers and canonical benchmarks are retained at the end under Root & Classics. Authors are especially encouraged to submit their own work with a canonical source and enough context for readers to verify relevance and publication status.
 
 See the [contribution guide](CONTRIBUTING.md) for the submission format and review checks.
 
@@ -61,7 +61,7 @@ Have a relevant paper, benchmark, dataset, broken link, or metadata correction? 
 
 Each paper stays on one line: **title link** followed by a compact `venue year` label.
 
-The active sections lead with 2025+ work; canonical pre-2025 roots are grouped at the end.
+The active sections lead with the latest 2026+ work. Selected 2025 papers are also included. Canonical pre-2025 roots are grouped at the end.
 
 <!-- PAPERS:START -->
 
@@ -160,7 +160,7 @@ The active sections lead with 2025+ work; canonical pre-2025 roots are grouped a
 
 ## 🙌 Community
 
-Thanks to everyone who contributes paper suggestions, metadata corrections, source links, and reading-guide improvements. Inclusion means a paper matches the collection policy; it does not imply endorsement of its findings.
+Thanks to everyone who contributes paper suggestions, metadata corrections, source links, and reading-guide improvements. Inclusion means a paper matches the collection policy. It does not imply endorsement of its findings.
 
 ## 📄 License
 

@@ -26,24 +26,24 @@ The paper’s core research question should use user preferences, history, profi
 
 We welcome:
 
-- foundational persona and user-modeling work;
-- recent papers, benchmarks, datasets, applications, and negative results from 2025 onward;
-- genuinely foundational pre-2025 papers and canonical benchmarks in the Root & Classics section;
-- methods based on prompting, retrieval, memory, fine-tuning, preference learning, decoding, or agents;
+- foundational persona and user-modeling work.
+- recent papers, benchmarks, datasets, applications, and negative results from 2025 onward.
+- genuinely foundational pre-2025 papers and canonical benchmarks in the Root & Classics section.
+- methods based on prompting, retrieval, memory, fine-tuning, preference learning, decoding, or agents.
 - work on privacy, safety, fairness, leakage, and user control in personalization.
 
 Usually out of scope unless the paper makes the personalization connection explicit:
 
-- ordinary RAG or generic memory systems;
-- general-purpose agents and generic RLHF/DPO;
-- fictional role-playing without user-specific adaptation;
+- ordinary RAG or generic memory systems.
+- general-purpose agents and generic RLHF/DPO.
+- fictional role-playing without user-specific adaptation.
 - traditional recommendation systems without a language-model personalization component.
 
 For a boundary case, explain the direct connection in one or two sentences.
 
 ### 📅 Recency policy
 
-The active index emphasizes work from 2025 onward. New paper submissions should be from 2026 onward. Pre-2025 work is reserved for Root & Classics when it is genuinely foundational or a canonical benchmark; surveys remain available as orientation across publication years.
+The active index emphasizes the latest work from 2026 onward. Selected papers from 2025 are also included. New paper submissions should be from 2026 onward. Pre-2025 work is reserved for Root & Classics when it is genuinely foundational or a canonical benchmark. Surveys remain available as orientation across publication years.
 
 ### Venue filter
 
@@ -53,7 +53,7 @@ For entries whose venue was supplied by an author but is not yet independently r
 
 ## 🧩 Entry format
 
-Add each paper to one primary category inside the marked Paper Index section of `README.md`. Keep the public list compact: one paper per line, with the venue and year at the end. Sort entries newest-first by year; use the normalized URL as the tie-breaker.
+Add each paper to one primary category inside the marked Paper Index section of `README.md`. Keep the public list compact: one paper per line, with the venue and year at the end. Sort entries newest-first by year. Use the normalized URL as the tie-breaker.
 
 ```markdown
 - **[Exact paper title](https://canonical-paper-url)**  `ACL 2018`
@@ -73,7 +73,7 @@ Use the official proceedings or publisher URL when available. The one-line label
 
 ## 🏷️ Controlled tags
 
-The compact README list does not display tags. This vocabulary is retained for future structured metadata and for maintainers who need consistent labels; add a new tag only through a PR that updates this list and explains the need.
+The compact README list does not display tags. This vocabulary is retained for future structured metadata and for maintainers who need consistent labels. Add a new tag only through a PR that updates this list and explains the need.
 
 <!-- TAGS:START -->
 `foundations` `survey` `user-profile` `preference-elicitation` `user-history`
@@ -86,7 +86,7 @@ The compact README list does not display tags. This vocabulary is retained for f
 
 ## 🔀 Pull request checklist
 
-Open a focused PR, usually one paper per PR; a small related batch is fine. The repository’s PR template will ask you to provide the paper URL, category, relevance, and metadata sources.
+Open a focused PR, usually one paper per PR. A small related batch is fine. The repository’s PR template will ask you to provide the paper URL, category, relevance, and metadata sources.
 
 Run these commands from the repository root:
 
@@ -101,9 +101,9 @@ Keep unrelated formatting changes out of the same PR. Nothing is auto-merged: ma
 
 Prefer this source order:
 
-1. official proceedings, journal, or publisher page;
-2. the paper’s arXiv or other stable preprint page;
-3. an author or lab project page;
+1. official proceedings, journal, or publisher page.
+2. the paper’s arXiv or other stable preprint page.
+3. an author or lab project page.
 4. an author-associated code or data repository.
 
 Verify the title, canonical link, stable ID, first-public date, publication status, relevance, summary, and optional resources. Do not upload PDFs, copy full abstracts, or reuse another list’s original descriptions.
@@ -112,4 +112,4 @@ Verify the title, canonical link, stable ID, first-public date, publication stat
 
 For unclear boundary cases, maintainers may request a short relevance explanation. Rejections should give a concrete reason, such as out of scope, duplicate, unreliable source, or obvious spam. No fixed review time is promised.
 
-Submitting a paper does not make you a paper author and does not grant authorship on any future survey. Authors may voluntarily disclose their relationship to a submission; unrelated personal information is not required.
+Submitting a paper does not make you a paper author and does not grant authorship on any future survey. Authors may voluntarily disclose their relationship to a submission. Unrelated personal information is not required.
