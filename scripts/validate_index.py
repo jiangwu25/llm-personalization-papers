@@ -27,7 +27,7 @@ CATEGORY_ORDER = (
     "Privacy, Safety & User Control",
     "Root & Classics",
 )
-ALLOWED_VENUES = {"ACL", "EMNLP", "NAACL", "AAAI", "SIGIR", "CIKM"}
+ALLOWED_VENUES = {"ACL", "EMNLP", "ICLR", "ICML", "NeurIPS", "Findings"}
 NAMED_PREPRINT_EXCEPTION_IDS = {"2512.06688"}
 PAPER_BADGE_RE = re.compile(r"papers-(?P<count>\d+)-[0-9A-Fa-f]{6}")
 FIELD_NAMES = {"ID", "First public", "Publication", "Summary", "Tags", "Resources"}
@@ -416,8 +416,8 @@ def main() -> int:
         benchmark_catalog_error = f"benchmark catalog ledger is invalid: {exc}"
     else:
         benchmark_catalog_error = ""
-        if len(authorized_benchmark_urls) != 20:
-            benchmark_catalog_error = "benchmark catalog ledger must contain 20 unique entries"
+        if len(authorized_benchmark_urls) != 18:
+            benchmark_catalog_error = "benchmark catalog ledger must contain 18 unique entries"
     report = validate_index(
         readme_text,
         contributing_path.read_text(encoding="utf-8"),

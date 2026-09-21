@@ -47,7 +47,7 @@ The active index emphasizes the latest work from 2026 onward. Selected papers fr
 
 ### Venue filter
 
-For the main index, non-survey papers must be formally published in one of the selected top/main venues: **ACL, EMNLP, NAACL, AAAI, SIGIR, or CIKM**. Surveys are the general exception and may remain preprints. The curated benchmark set is recorded in [benchmark-catalog.json](docs/benchmark-catalog.json) and appears in the unified Benchmarks & Evaluation section. Other pre-2025 canonical references are placed under Root & Classics. PersonaMem-v2 remains separately covered by the transparent [inclusion-exception ledger](docs/inclusion-exceptions.json). Do not treat these named records as a blanket admission rule for unrelated work.
+For the main index, non-survey papers must be formally published at **ACL, EMNLP, ICLR, ICML, or NeurIPS**. Findings papers count as accepted publications. AAAI and COLM papers are considered only as exceptional classics with at least 1,000 citations documented by a stable bibliometric source. Surveys are the general exception and may remain preprints. The curated benchmark set is recorded in [benchmark-catalog.json](docs/benchmark-catalog.json) and appears in Benchmarks & Evaluation. Other pre-2025 canonical references are placed under Root & Classics. PersonaMem-v2 remains separately covered by the transparent [inclusion-exception ledger](docs/inclusion-exceptions.json). Do not treat these named records as a blanket admission rule for unrelated work.
 
 For entries whose venue was supplied by an author but is not yet independently represented by a public proceedings page, see the [paper provenance ledger](docs/paper-provenance.json). Do not invent a track, DOI, page number, or proceedings URL.
 
@@ -61,7 +61,7 @@ Benchmark additions must also update [benchmark-catalog.json](docs/benchmark-cat
 - **[Exact paper title](https://canonical-paper-url)**  `ACL 2018`
 ```
 
-Use the official proceedings or publisher URL when available. The one-line label should use the formal venue and publication year, for example `ACL 2018`, `AAAI 2024`, or `Survey · 2025`. A named benchmark exception must use its accurate preprint label, such as `arXiv 2025-12`. Keep summaries and implementation details in the paper itself or the reading guide rather than expanding the main index.
+Use the official proceedings or publisher URL when available. The one-line label should use the formal venue and publication year, for example `ACL 2018`, `ICLR 2026`, or `Survey · 2025`. A named benchmark exception must use its accurate preprint label, such as `arXiv 2025-12`. Keep summaries and implementation details in the paper itself or the reading guide rather than expanding the main index.
 
 ## ✅ Five-minute checklist
 
