@@ -31,7 +31,7 @@ User modeling · Memory · Retrieval · Preference alignment · Personalized age
   <a href="#root-classics">🌳 Root</a>
 </p>
 
-## ✨ Explore the collection
+## ✨ Explore the 2026 collection
 
 **New to the field?** Follow the [reading guide](docs/reading-guide.md), then use the [surveys](#surveys) to build a map of the area.
 

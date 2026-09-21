@@ -31,7 +31,7 @@
   <a href="#root-classics">🌳 根基</a>
 </p>
 
-## ✨ 如何阅读
+## ✨ 探索 2026 精选
 
 **刚接触这个领域？** 先看[阅读指南](docs/reading-guide.md)，再通过[综述论文](#surveys)建立完整的领域地图。
 
